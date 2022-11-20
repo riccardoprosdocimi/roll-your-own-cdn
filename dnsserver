@@ -12,51 +12,22 @@ DNS_SERVER = "localhost"  #"proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
 PORT = 25016
 IP = "cs5700cdn.example.com"
+CDN_NAME = "cs5700cdn"
 UDP_MSG_SIZE = 512
 
 
 class Resolver:
     def resolve(self, request, handler):
-        response = request.reply()
-        response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
-        print(request)
-        return response
+        if CDN_NAME in request.q.qname:
+            response = request.reply()
+            response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
+            return response
 
-
-def _get_local_ip():
-    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.connect(('www.google.com', 80))
-
-    ip, port = s.getsockname()
-    s.close()
-
-    return ip
-
-
-# a = q.send(DNS_SERVER, PORT, tcp=True)
-# print(DNSRecord.parse(a))
-#
-#
-#
-# sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-# sock.bind((IP, PORT))
-#
-#
-# def build_response(data):
-#     d = DNSRecord.question(IP)
-#
-#
-# while True:
-#     data, addr = sock.recvfrom(UDP_MSG_SIZE)
-#     response = build_response(data)
-#     sock.sendto(response, addr)
 
 def main():
-    ip = _get_local_ip()
-    print(ip)
     resolver = Resolver()
     logger = DNSLogger(prefix=False)
-    server = DNSServer(resolver, port=PORT, address=DNS_SERVER)
+    server = DNSServer(resolver, logger=logger, port=PORT, address=DNS_SERVER)
     server.start()
 
 

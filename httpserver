@@ -12,7 +12,6 @@ ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 class CdnHttpServer(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        print(self.path)
         data = self.get_data(self.path)
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
