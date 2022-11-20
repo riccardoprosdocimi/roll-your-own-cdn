@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from functools import lru_cache
 from urllib.request import urlopen
@@ -10,17 +12,20 @@ ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 class CdnHttpServer(BaseHTTPRequestHandler):
 
     def do_GET(self):
-        data = self.get_data()
+        print(self.path)
+        data = self.get_data(self.path)
         self.send_response(200)
         self.send_header("Content-Type", "text/html; charset=utf-8")
         self.send_header("Content-Length", str(len(data)))
-        self.send_header("Host", )
+        self.send_header("Host", "localhost")
         self.end_headers()
         self.wfile.write(data)
 
+    @staticmethod
     @lru_cache
-    def get_data(self) -> bytes:
-        with urlopen("http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + self.path) as response:
+    def get_data(path: str) -> bytes:
+        print("Not cached")
+        with urlopen("http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + path) as response:
             return response.read()
 
 
