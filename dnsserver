@@ -1,14 +1,10 @@
 #!/usr/bin/env python3
-
-# import socket
-import socket
-
 from dnslib.server import DNSServer, DNSLogger, DNSRecord
 from dnslib.dns import RR
 
 HTTP_SERVER = "proj4-repl1.5700.network"
 HTTP_SERVER_IP = "139.144.30.25"
-DNS_SERVER = "localhost"  #"proj4-dns.5700.network"
+DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
 PORT = 25016
 IP = "cs5700cdn.example.com"
@@ -17,7 +13,9 @@ UDP_MSG_SIZE = 512
 
 
 class Resolver:
-    def resolve(self, request, handler):
+
+    @staticmethod
+    def resolve(request, handler):
         if CDN_NAME in request.q.qname:
             response = request.reply()
             response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
@@ -28,9 +26,13 @@ def main():
     resolver = Resolver()
     logger = DNSLogger(prefix=False)
     server = DNSServer(resolver, logger=logger, port=PORT, address=DNS_SERVER)
-    server.start()
+    try:
+        server.start()
+    except KeyboardInterrupt:
+        pass
+    server.stop()
+    print("server stopped")
 
 
 if __name__ == "__main__":
     main()
-
