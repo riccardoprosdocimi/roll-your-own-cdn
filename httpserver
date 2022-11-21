@@ -9,7 +9,7 @@ ORIGIN_PORT = "8080"
 ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 
 
-class CdnHttpServer(BaseHTTPRequestHandler):
+class CdnHttpHandler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         data = self.get_data(self.path)
@@ -29,7 +29,7 @@ class CdnHttpServer(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    webServer = HTTPServer(("localhost", PORT), CdnHttpServer)
+    webServer = HTTPServer(("localhost", PORT), CdnHttpHandler)
     try:
         webServer.serve_forever()
     except KeyboardInterrupt:
