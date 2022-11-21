@@ -1,0 +1,2 @@
+- ask professor how to do active measurements without having access to clients
+    - WHAT to ping from the HTTP servers?
