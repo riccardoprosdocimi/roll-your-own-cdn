@@ -14,3 +14,7 @@ do
         i) keyfile=${OPTARG};;
     esac
 done
+
+# clean up
+echo "Cleaning up existing directories/files"
+ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
