@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import argparse
 from dnslib.server import DNSServer, DNSLogger, DNSRecord
 from dnslib.dns import RR
 
@@ -7,25 +8,34 @@ HTTP_SERVER_IP = "139.144.30.25"
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
 PORT = 25016
-IP = "cs5700cdn.example.com"
+NAME = "cs5700cdn.example.com"
 CDN_NAME = "cs5700cdn"
 UDP_MSG_SIZE = 512
 
 
 class Resolver:
-
     @staticmethod
     def resolve(request, handler):
-        if CDN_NAME in request.q.qname:
-            response = request.reply()
-            response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
-            return response
+        response = request.reply()
+        response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
+        return response
+
+
+def parse_args():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p", type=str, help="the port number the server will bind to")
+    parser.add_argument("-n", type=str, help=" the CDN-specific name that the server translates to an IP.")
+    args = parser.parse_args()
+    return args
 
 
 def main():
+    args = parse_args()
+    port = args.p
+    name = args.n
     resolver = Resolver()
     logger = DNSLogger(prefix=False)
-    server = DNSServer(resolver, logger=logger, port=PORT, address=DNS_SERVER)
+    server = DNSServer(resolver, logger=logger, port=port, address=DNS_SERVER)
     try:
         server.start()
     except KeyboardInterrupt:
