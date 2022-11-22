@@ -9,30 +9,31 @@ DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
 PORT = 25016
 NAME = "cs5700cdn.example.com"
-CDN_NAME = "cs5700cdn"
 UDP_MSG_SIZE = 512
 
 
 class Resolver:
     @staticmethod
     def resolve(request, handler):
-        response = request.reply()
-        response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
-        return response
+        if request.q.qname == NAME:
+            response = request.reply()
+            response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
+            return response
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", type=str, help="the port number the server will bind to")
-    parser.add_argument("-n", type=str, help=" the CDN-specific name that the server translates to an IP.")
+    parser.add_argument("-p", type=int, help="the port number the server will bind to")
+    parser.add_argument("-n", type=str, help="the CDN-specific name that the server translates to an IP.")
     args = parser.parse_args()
     return args
 
 
 def main():
+    global NAME
     args = parse_args()
     port = args.p
-    name = args.n
+    NAME = args.n
     resolver = Resolver()
     logger = DNSLogger(prefix=False)
     server = DNSServer(resolver, logger=logger, port=port, address=DNS_SERVER)

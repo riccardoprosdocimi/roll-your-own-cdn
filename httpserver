@@ -30,7 +30,7 @@ class CdnHttpHandler(BaseHTTPRequestHandler):
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", type=str, help="the port number the server will bind to")
+    parser.add_argument("-p", type=int, help="the port number the server will bind to")
     parser.add_argument("-o", type=str, help="the name of the origin server")
     args = parser.parse_args()
     return args
