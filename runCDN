@@ -1,20 +1,22 @@
-#!/usr/bin/env python3
-import argparse
+#!/usr/bin/env bash
 
+while getopts p:o:n:u:i: flag
+do
+    case "${flag}" in
+        p) port=${OPTARG};;
+        o) origin=${OPTARG};;
+        n) name=${OPTARG};;
+        u) username=${OPTARG};;
+        i) keyfile=${OPTARG};;
+    esac
+done
+echo 'Deploying the following...'
+echo "Port: $port";
+echo "origin: $origin";
+echo "name: $name";
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-p", type=str, help="the port number the server will bind to")
-    parser.add_argument("-o", type=str, help="the name of the origin server")
-    parser.add_argument("-n", type=str, help="CDN-specific name that the server translates to an IP")
-    parser.add_argument("-u", type=str, help="the account name for logging in")
-    parser.add_argument("-i", type=str, help="path to the private key for logging into nodes")
-    args = parser.parse_args()
+# ssh into dns server
+ssh -i path_to_key r_r@proj4-dns.5700.network "cd cdn; ./dnsserver -p $port -n $name; ./httpserver -p $port -o $origin"
 
+# "pwd; mkdir cdn; cd cdn; ./dnsserver -p $port -n $name; ./httpserver -p $port -o $origin"
 
-def main():
-    parse_args()
-
-
-if __name__ == "__main__":
-    main()
