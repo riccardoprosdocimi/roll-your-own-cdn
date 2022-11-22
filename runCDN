@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+DNS_SERVER = proj4-dns.5700.network
+DNS_DIR = 'dns_server'
+HTTP_REPLICAS=(proj4-repl1.5700.network)
+HTTP_DIR = 'http_server'
+
 while getopts p:o:n:u:i: flag
 do
     case "${flag}" in
@@ -10,13 +15,20 @@ do
         i) keyfile=${OPTARG};;
     esac
 done
-echo 'Deploying the following...'
-echo "Port: $port";
-echo "origin: $origin";
-echo "name: $name";
 
-# ssh into dns server
-ssh -i path_to_key r_r@proj4-dns.5700.network "cd cdn; ./dnsserver -p $port -n $name; ./httpserver -p $port -o $origin"
+# ssh into dns server and run script.
+echo "Attempting to run DNS Server..."
+ssh -i $keyfile $username@$DNS_SERVER "cd ~/$DNS_DIR; ./dnsserver -p $port -n $name"
+echo "DNS server is running!"
 
-# "pwd; mkdir cdn; cd cdn; ./dnsserver -p $port -n $name; ./httpserver -p $port -o $origin"
+# Run each CDN replica
+echo "Setting up CDN replicas..."
+for replica in "${HTTP_REPLICAS[@]}"
+do
+	echo "Attempting to run replica: $username@$replica...."
+	ssh -i $keyfile $username@$replica "cd ~/$HTTP_DIR; ./httpserver -p $port -o $origin"
+	echo "Repica running at: $username@$replica"
+done
+echo "All replicas running!"
+
 
