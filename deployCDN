@@ -1,20 +1,43 @@
-#!/usr/bin/env python3
-import argparse
+#!/usr/bin/env bash
+
+DNS_SERVER = proj4-dns.5700.network
+DNS_DIR = 'dns_server'
+HTTP_REPLICAS=(proj4-repl1.5700.network)
+HTTP_DIR = 'http_server'
+
+while getopts p:o:n:u:i: flag
+do
+    case "${flag}" in
+        p) port=${OPTARG};;
+        o) origin=${OPTARG};;
+        n) name=${OPTARG};;
+        u) username=${OPTARG};;
+        i) keyfile=${OPTARG};;
+    esac
+done
+
+# DNS server deployment
+echo "Deploying DNS server..."
+echo "Cleaning up existing directories/files"
+ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
+echo "Copying DNS files..."
+scp -i $keyfile dnsserver $username@$DNS_SERVER:~/$DNS_DIR/
+echo "Successfully deployed DNS Server: $username@$DNS_SERVER"
+
+# CDN replica deployment
+echo "Deploying CDN replicas..."
+for replica in "${HTTP_REPLICAS[@]}"
+do
+	echo "Deploying Replica: $username@$replica...."
+	echo "Cleaning up existing directories..."
+	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
+	echo "Copying server file..."
+	scp -i $keyfile httpserver $username@$replica:~/$HTTP_DIR/
+    echo "Copying page views file..."
+	ssh -i $keyfile $username@$host "cd ~/$HTTP_DIR; wget https://piazza.com/redirect/s3?bucket=uploads&prefix=paste%2Fho06biocf8jp0%2Feb3ed044f8c9a064760175e30aee3f0afcc1538ea0bc89cfd55bae71f487c06a%2Fpageviews.csv"
+	echo "Deployment complete for replica: $username@$replica\n"
+done
+echo "All replicas deployed!"
 
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-p", type=str, help="the port number the server will bind to")
-    parser.add_argument("-o", type=str, help="the name of the origin server")
-    parser.add_argument("-n", type=str, help="CDN-specific name that the server translates to an IP")
-    parser.add_argument("-u", type=str, help="the account name for logging in")
-    parser.add_argument("-i", type=str, help="path to the private key for logging into nodes")
-    args = parser.parse_args()
 
-
-def main():
-    parse_args()
-
-
-if __name__ == "__main__":
-    main()
