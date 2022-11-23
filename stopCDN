@@ -16,20 +16,25 @@ do
     esac
 done
 
-echo "Shutting down the DNS server"
+# shut down DNS server
+echo "Shutting down the DNS server..."
 ssh -i $keyfile $username@$DNS_SERVER pkill -u $USERNAME python3
+echo "DNS server has stopped"
 
 # clean up
-echo "Cleaning up existing directories/files"
+echo "Cleaning up existing directories/files in the DNS server"
 ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR"
+echo "DNS server cleanup completed"
 
+#shut down and clean up HTTP servers
 echo "Shutting down CDN replicas..."
 for replica in "${HTTP_REPLICAS[@]}"
 do
-	echo "Shutting down replica: $username@$replica...."
+	echo "Shutting down replica: $username@$replica..."
 	ssh -i $keyfile $username@$replica pkill -u $USERNAME python3
 	
-    echo "Cleaning up existing directories/files"
+    echo "Cleaning up existing directories/files in replica: $username@$replica..."
     ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR"
 done
-echo "All replicas running!"
+echo "Replicas have stopped"
+echo "Replicas cleanup completed"

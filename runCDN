@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 DNS_SERVER=proj4-dns.5700.network
 DNS_DIR='dns_server'
 HTTP_REPLICAS=(proj4-repl1.5700.network)
@@ -30,5 +29,3 @@ do
 	echo "Repica running at: $username@$replica"
 done
 echo "All replicas running!"
-
-

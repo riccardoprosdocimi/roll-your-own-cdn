@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 DNS_SERVER=proj4-dns.5700.network
 DNS_DIR='dns_server'
 HTTP_REPLICAS=(proj4-repl1.5700.network)
@@ -18,7 +17,7 @@ done
 
 # DNS server deployment
 echo "Deploying DNS server..."
-echo "Cleaning up existing directories/files"
+echo "Cleaning up any existing directories/files"
 ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
 echo "Copying DNS files..."
 scp -i $keyfile dnsserver utils.py $username@$DNS_SERVER:~/$DNS_DIR/
@@ -36,6 +35,3 @@ do
 	echo "Deployment complete for replica: $username@$replica\n"
 done
 echo "All replicas deployed!"
-
-
-
