@@ -1,4 +1,5 @@
 - add endpoint to http server which reports the current CPU usage
+- save log file on the server instead of the local machine
 
 maxmind username: shutupandletrohitin@gmail.com
 maxmind password: cs5700p4123

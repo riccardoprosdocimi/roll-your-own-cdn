@@ -3,6 +3,7 @@ import argparse
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from functools import lru_cache
 from urllib.request import urlopen
+from utils import get_local_ip
 
 PORT = 25016
 ORIGIN_PORT = "8080"
@@ -41,7 +42,7 @@ def main():
     args = parse_args()
     port = args.p
     ORIGIN_SERVER = args.o
-    web_server = HTTPServer(("localhost", port), CdnHttpHandler)
+    web_server = HTTPServer((get_local_ip(), port), CdnHttpHandler)
     try:
         web_server.serve_forever()
     except KeyboardInterrupt:

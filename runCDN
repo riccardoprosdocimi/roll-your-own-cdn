@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-DNS_SERVER = proj4-dns.5700.network
-DNS_DIR = 'dns_server'
+DNS_SERVER=proj4-dns.5700.network
+DNS_DIR='dns_server'
 HTTP_REPLICAS=(proj4-repl1.5700.network)
-HTTP_DIR = 'http_server'
+HTTP_DIR='http_server'
 
 while getopts p:o:n:u:i: flag
 do
@@ -18,7 +18,7 @@ done
 
 # ssh into dns server and run script.
 echo "Attempting to run DNS Server..."
-ssh -i $keyfile $username@$DNS_SERVER "cd ~/$DNS_DIR; ./dnsserver -p $port -n $name"
+ssh -i $keyfile $username@$DNS_SERVER nohup $DNS_DIR/dnsserver -p $port -n $name 2>&1 &>logs.txt &
 echo "DNS server is running!"
 
 # Run each CDN replica
@@ -26,7 +26,7 @@ echo "Setting up CDN replicas..."
 for replica in "${HTTP_REPLICAS[@]}"
 do
 	echo "Attempting to run replica: $username@$replica...."
-	ssh -i $keyfile $username@$replica "cd ~/$HTTP_DIR; ./httpserver -p $port -o $origin"
+	ssh -i $keyfile $username@$replica nohup $HTTP_DIR/httpserver -p $port -o $origin 2>&1 &>logs.txt &
 	echo "Repica running at: $username@$replica"
 done
 echo "All replicas running!"

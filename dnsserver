@@ -2,6 +2,7 @@
 import argparse
 from dnslib.server import DNSServer, DNSLogger, DNSError
 from dnslib.dns import RR
+from utils import get_local_ip
 
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
@@ -41,7 +42,7 @@ def main():
     CDN_NAME = args.n
     resolver = Resolver()
     logger = DNSLogger(prefix=False)
-    server = DNSServer(resolver, logger=logger, port=port, address=DNS_SERVER)
+    server = DNSServer(resolver, logger=logger, port=port, address=get_local_ip())
     try:
         server.start()
     except KeyboardInterrupt:
