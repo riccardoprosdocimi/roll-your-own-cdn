@@ -31,7 +31,10 @@ do
 	echo "Cleaning up existing directories..."
 	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
 	echo "Copying server file..."
-	scp -i $keyfile httpserver utils.py pageviews.csv $username@$replica:~/$HTTP_DIR/
+	scp -i $keyfile httpserver utils.py pageviews.csv build_cache.py $username@$replica:~/$HTTP_DIR/
+	echo "Fetching articles for caching"
+	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; python3 build_cache.py -o $origin"
+	echo "Cache built"
 	echo "Deployment complete for replica: $username@$replica\n"
 done
 echo "All replicas deployed!"
