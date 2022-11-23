@@ -1,24 +1,30 @@
 #!/usr/bin/env python3
 import argparse
-from dnslib.server import DNSServer, DNSLogger, DNSRecord
+from dnslib.server import DNSServer, DNSLogger, DNSError
 from dnslib.dns import RR
+from utils import get_local_ip
 
-HTTP_SERVER = "proj4-repl1.5700.network"
-HTTP_SERVER_IP = "139.144.30.25"
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
-PORT = 25016
-NAME = "cs5700cdn.example.com"
-UDP_MSG_SIZE = 512
+
+CDN_NAME = "cs5700cdn.example.com"
+TTL = 60
+
+REPLICAS = [
+    ("proj4-repl1.5700.network", "139.144.30.25"), 
+]
 
 
 class Resolver:
     @staticmethod
     def resolve(request, handler):
-        if request.q.qname == NAME:
+        if request.q.qname == CDN_NAME:
             response = request.reply()
-            response.add_answer(*RR.fromZone(f"{HTTP_SERVER}. 60 A {HTTP_SERVER_IP}"))
+            replica_domain_name, replica_ip = REPLICAS[0]
+            response.add_answer(*RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
             return response
+        
+        raise DNSError(f"Not authoritative for {request.q.qname}")
 
 
 def parse_args():
@@ -30,13 +36,13 @@ def parse_args():
 
 
 def main():
-    global NAME
+    global CDN_NAME
     args = parse_args()
     port = args.p
-    NAME = args.n
+    CDN_NAME = args.n
     resolver = Resolver()
     logger = DNSLogger(prefix=False)
-    server = DNSServer(resolver, logger=logger, port=port, address=DNS_SERVER)
+    server = DNSServer(resolver, logger=logger, port=port, address=get_local_ip())
     try:
         server.start()
     except KeyboardInterrupt:

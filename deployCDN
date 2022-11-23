@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 
-DNS_SERVER = proj4-dns.5700.network
-DNS_DIR = 'dns_server'
+DNS_SERVER=proj4-dns.5700.network
+DNS_DIR='dns_server'
 HTTP_REPLICAS=(proj4-repl1.5700.network)
-HTTP_DIR = 'http_server'
+HTTP_DIR='http_server'
 
 while getopts p:o:n:u:i: flag
 do
@@ -21,7 +21,7 @@ echo "Deploying DNS server..."
 echo "Cleaning up existing directories/files"
 ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
 echo "Copying DNS files..."
-scp -i $keyfile dnsserver $username@$DNS_SERVER:~/$DNS_DIR/
+scp -i $keyfile dnsserver utils.py $username@$DNS_SERVER:~/$DNS_DIR/
 echo "Successfully deployed DNS Server: $username@$DNS_SERVER"
 
 # CDN replica deployment
@@ -32,9 +32,7 @@ do
 	echo "Cleaning up existing directories..."
 	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
 	echo "Copying server file..."
-	scp -i $keyfile httpserver $username@$replica:~/$HTTP_DIR/
-    echo "Copying page views file..."
-	ssh -i $keyfile $username@$host "cd ~/$HTTP_DIR; wget https://piazza.com/redirect/s3?bucket=uploads&prefix=paste%2Fho06biocf8jp0%2Feb3ed044f8c9a064760175e30aee3f0afcc1538ea0bc89cfd55bae71f487c06a%2Fpageviews.csv"
+	scp -i $keyfile httpserver utils.py pageviews.csv $username@$replica:~/$HTTP_DIR/
 	echo "Deployment complete for replica: $username@$replica\n"
 done
 echo "All replicas deployed!"
