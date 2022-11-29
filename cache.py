@@ -28,9 +28,11 @@ class Cache:
         self.heap = []
         self.buffer = []
         self.origin_url = origin_url
-        self.build_in_memory_cache()
         self.disk_used = 0
         self.max_disk_size = 19 * 1024 * 1024  # conservatively stopping at 19MB
+        self.memory_used = 0
+        self.max_memory_size = 19 * 1024 * 1024  # conservatively stopping at 19MB
+        self.build_in_memory_cache()
 
     def get(self, article: str) -> bytes:
         lookup_info: LookupInfo = self.views[article]
@@ -72,7 +74,20 @@ class Cache:
 
                 try:
                     with open(f"cache/{article}", "rb") as fd:
-                        self.buffer.append(fd.read())
+                        compressed_article = fd.read()
+
+                        if not self.fits_in_memory_cache(compressed_article):
+                            lookup_info = LookupInfo(views, ON_DISK, article)
+
+                            # Don't break, continue so that any potentially smaller article
+                            # down the line can be cached.
+                            continue
+
+                        self.memory_used += len(compressed_article)
+                        self.buffer.append(compressed_article)
+
+                        # Remove from disk cache
+                        os.remove(f"cache/{article}")
 
                         buffer_offset = len(self.buffer) - 1
                         lookup_info = LookupInfo(views, buffer_offset, article)
@@ -95,13 +110,19 @@ class Cache:
                 lookup_info_to_demote.buffer_offset
             ]
 
-            swap_possible = (
+            swap_possible_on_disk = (
                 self.disk_used
                 - len(compressed_article_to_promote)
                 + len(compressed_article_to_demote)
             ) <= self.max_disk_size
 
-            if swap_possible:
+            swap_possible_in_memory = (
+                self.memory_used
+                - len(compressed_article_to_demote)
+                + len(compressed_article_to_promote)
+            ) <= self.max_memory_size
+
+            if swap_possible_on_disk and swap_possible_in_memory:
                 self.remove_from_disk_cache(article_name_to_promote)
                 self.save_to_disk_cache(
                     lookup_info_to_demote.article_name, compressed_article_to_demote
@@ -113,6 +134,9 @@ class Cache:
                 lookup_info_to_promote.buffer_offset = (
                     lookup_info_to_demote.buffer_offset
                 )
+                print(
+                    f"Promoted {article_name_to_promote}, demoted {lookup_info_to_demote.article_name}"
+                )
 
     def fetch_from_origin(self, article: str) -> bytes:
         with urlopen(f"{self.origin_url}/{article}") as response:
@@ -123,6 +147,9 @@ class Cache:
         file_size = os.path.getsize(filepath)
         os.remove(filepath)
         self.disk_used -= file_size
+
+    def fits_in_memory_cache(self, article_raw_bytes: bytes) -> bool:
+        return self.memory_used + len(article_raw_bytes) <= self.max_memory_size
 
     def save_to_disk_cache(self, article: str, article_raw_bytes: bytes) -> bool:
         try:
@@ -145,5 +172,4 @@ class Cache:
 
 if __name__ == "__main__":
     cache = Cache()
-    cache.get("50_Cent")
-    cache.get("Shakira")
+    print(cache.memory_used, cache.disk_used)

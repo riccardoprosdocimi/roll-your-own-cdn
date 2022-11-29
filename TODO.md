@@ -15,3 +15,12 @@ Can we assume client is capable of accepting a gzip compressed file using the Co
 
 Add another layer of indirection by not using article names anywhere internally within the cache. Have a dictionary
 at the entry which maps a string to an int or something which is lighter to duplicate within a LookupInfo object
+
+How to test this out?
+- easy to test: uncached and in-memory cache
+- moderately hard to test: on disk cache
+    - first request will lead to uncached, which gets cached to disk
+    - subsequent requests should be served from disk
+- hard to test: promotion
+    - setup a test example
+    - 

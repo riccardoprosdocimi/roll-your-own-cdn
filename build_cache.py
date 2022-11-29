@@ -1,17 +1,19 @@
-import csv
 import argparse
+import csv
 import gzip
 import os
-from urllib.request import urlopen
-from urllib.parse import quote
 from urllib.error import HTTPError
+from urllib.parse import quote
+from urllib.request import urlopen
 
 ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 ORIGIN_PORT = "8080"
 
 
 def fetch_from_origin(path: str) -> bytes:
-    with urlopen("http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + "/" + path) as response:
+    with urlopen(
+        "http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + "/" + path
+    ) as response:
         return response.read()
 
 
@@ -23,15 +25,17 @@ def parse_args():
 
 
 def main():
-    os.mkdir("cache")
+    if not os.path.exists("cache"):
+        os.mkdir("cache")
+
     global ORIGIN_SERVER
     args = parse_args()
     ORIGIN_SERVER = args.o
-    with open('pageviews.csv') as article_file:
+    with open("pageviews.csv") as article_file:
         reader = csv.DictReader(article_file)
         for row in reader:
             try:
-                path = quote(row['article'].replace(" ", "_"))
+                path = quote(row["article"].replace(" ", "_"))
                 article = fetch_from_origin(path)
                 compressed_article = gzip.compress(article)
                 with open(f"cache/{path}", "wb") as cache_file:
