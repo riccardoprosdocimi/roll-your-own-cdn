@@ -9,3 +9,6 @@ maxmind password: cs5700p4123
 DONE:
 - ask professor how to do active measurements without having access to clients
     - WHAT to ping from the HTTP servers?
+
+
+Can we assume client is capable of accepting a gzip compressed file using the Content-Encoding: gzip header?
