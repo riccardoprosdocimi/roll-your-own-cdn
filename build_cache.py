@@ -11,7 +11,6 @@ ORIGIN_PORT = "8080"
 
 
 def fetch_from_origin(path: str) -> bytes:
-    path = quote(path.replace(" ", "_"))
     with urlopen("http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + "/" + path) as response:
         return response.read()
 
@@ -32,9 +31,10 @@ def main():
         reader = csv.DictReader(article_file)
         for row in reader:
             try:
-                article = fetch_from_origin(row['article'])
+                path = quote(row['article'].replace(" ", "_"))
+                article = fetch_from_origin(path)
                 compressed_article = gzip.compress(article)
-                with open(f"cache/{row['article']}", "wb") as cache_file:
+                with open(f"cache/{path}", "wb") as cache_file:
                     cache_file.write(compressed_article)
             except HTTPError as e:
                 print(e)
