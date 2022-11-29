@@ -14,130 +14,136 @@ ON_DISK = -2
 
 @dataclass(order=True)
 class LookupInfo:
-	views: int
-	buffer_offset: int
-	article_name: str
+    views: int
+    buffer_offset: int
+    article_name: str
 
-	def increment_views(self):
-		self.views += 1
+    def increment_views(self):
+        self.views += 1
 
 
 class Cache:
-	def __init__(self, origin_url: str = DEFAULT_ORIGIN_URL):
-		self.views = {}
-		self.heap = []
-		self.buffer = []
-		self.origin_url = origin_url
-		self.build_in_memory_cache()
-		self.disk_used = 0
-		self.max_disk_size = 19 * 1024 * 1024  # conservatively stopping at 19MB
+    def __init__(self, origin_url: str = DEFAULT_ORIGIN_URL):
+        self.views = {}
+        self.heap = []
+        self.buffer = []
+        self.origin_url = origin_url
+        self.build_in_memory_cache()
+        self.disk_used = 0
+        self.max_disk_size = 19 * 1024 * 1024  # conservatively stopping at 19MB
 
-	def get(self, article: str) -> bytes:
-		lookup_info: LookupInfo = self.views[article]
-		lookup_info.increment_views()
+    def get(self, article: str) -> bytes:
+        lookup_info: LookupInfo = self.views[article]
+        lookup_info.increment_views()
 
-		if lookup_info.buffer_offset == NOT_CACHED:
-			# (CACHE MISS) fetch from origin and cache to disk
-			print(f"{article}: Not cached, fetching from origin")
+        if lookup_info.buffer_offset == NOT_CACHED:
+            # (CACHE MISS) fetch from origin and cache to disk
+            print(f"{article}: Not cached, fetching from origin")
 
-			article_raw_bytes = self.fetch_from_origin(article)
-			compressed_article = self.compress_article(article_raw_bytes)
-			
-			if self.save_to_disk_cache(article, compressed_article):
-				lookup_info.buffer_offset = ON_DISK
-			else:
-				print("Failed to cache article to disk")
+            article_raw_bytes = self.fetch_from_origin(article)
+            compressed_article = self.compress_article(article_raw_bytes)
 
-			return compressed_article
-		elif lookup_info.buffer_offset == ON_DISK:
-			# (DISK CACHE HIT) fetch from disk and see if it qualifies for promotion
-			print(f"{article}: Serving from disk cache")
+            if self.save_to_disk_cache(article, compressed_article):
+                lookup_info.buffer_offset = ON_DISK
+            else:
+                print("Failed to cache article to disk")
 
-			compressed_article = self.get_from_disk_cache(article)
-			self.attempt_promotion(article, compressed_article)
+            return compressed_article
+        elif lookup_info.buffer_offset == ON_DISK:
+            # (DISK CACHE HIT) fetch from disk and see if it qualifies for promotion
+            print(f"{article}: Serving from disk cache")
 
-			return compressed_article
-		else:
-			# (IN-MEMORY CACHE HIT) fetch from in-memory cache
-			print(f"{article}: Serving from in-memory cache")
+            compressed_article = self.get_from_disk_cache(article)
+            self.attempt_promotion(article, compressed_article)
 
-			return self.buffer[lookup_info.buffer_offset]
+            return compressed_article
+        else:
+            # (IN-MEMORY CACHE HIT) fetch from in-memory cache
+            print(f"{article}: Serving from in-memory cache")
 
-	def build_in_memory_cache(self):
-		with open("pageviews.csv") as article_file:
-			reader = csv.DictReader(article_file)
-			for row in reader:
-				article = quote(row["article"].replace(" ", "_"))
-				views = int(row["views"])
+            return self.buffer[lookup_info.buffer_offset]
 
-				try:
-					with open(f"cache/{article}", "rb") as fd:
-						self.buffer.append(fd.read())
+    def build_in_memory_cache(self):
+        with open("pageviews.csv") as article_file:
+            reader = csv.DictReader(article_file)
+            for row in reader:
+                article = quote(row["article"].replace(" ", "_"))
+                views = int(row["views"])
 
-						buffer_offset = len(self.buffer) - 1
-						lookup_info = LookupInfo(views, buffer_offset, article)
-				except IOError:
-					lookup_info = LookupInfo(views, NOT_CACHED, article)
-				finally:
-					self.views[article] = lookup_info
-					self.heap.append(lookup_info)
+                try:
+                    with open(f"cache/{article}", "rb") as fd:
+                        self.buffer.append(fd.read())
 
-		heapq.heapify(self.heap)
+                        buffer_offset = len(self.buffer) - 1
+                        lookup_info = LookupInfo(views, buffer_offset, article)
+                except IOError:
+                    lookup_info = LookupInfo(views, NOT_CACHED, article)
+                finally:
+                    self.views[article] = lookup_info
+                    self.heap.append(lookup_info)
 
-	def attempt_promotion(self, article_name_to_promote, compressed_article_to_promote):
-		lookup_info_to_demote: LookupInfo = heapq.nsmallest(1, self.heap)[0]
-		lookup_info_to_promote: LookupInfo = self.views[article_name_to_promote]
+        heapq.heapify(self.heap)
 
-		eligible = lookup_info_to_demote.views < lookup_info_to_promote.views
+    def attempt_promotion(self, article_name_to_promote, compressed_article_to_promote):
+        lookup_info_to_demote: LookupInfo = heapq.nsmallest(1, self.heap)[0]
+        lookup_info_to_promote: LookupInfo = self.views[article_name_to_promote]
 
-		if eligible:
-			compressed_article_to_demote = self.buffer[
-				lookup_info_to_demote.buffer_offset
-			]
+        eligible = lookup_info_to_demote.views < lookup_info_to_promote.views
 
-			swap_possible = (
-				self.disk_used
-				- len(compressed_article_to_promote)
-				+ len(compressed_article_to_demote)
-			) <= self.max_disk_size
+        if eligible:
+            compressed_article_to_demote = self.buffer[
+                lookup_info_to_demote.buffer_offset
+            ]
 
-			if swap_possible:
-				self.remove_from_disk_cache(article_name_to_promote)
-				self.save_to_disk_cache(lookup_info_to_demote.article_name, compressed_article_to_demote)
-				self.buffer[lookup_info_to_demote.buffer_offset] = compressed_article_to_promote
-				lookup_info_to_demote.buffer_offset = ON_DISK
-				lookup_info_to_promote.buffer_offset = lookup_info_to_demote.buffer_offset
+            swap_possible = (
+                self.disk_used
+                - len(compressed_article_to_promote)
+                + len(compressed_article_to_demote)
+            ) <= self.max_disk_size
 
-	def fetch_from_origin(self, article: str) -> bytes:
-		with urlopen(f"{self.origin_url}/{article}") as response:
-			return response.read()
+            if swap_possible:
+                self.remove_from_disk_cache(article_name_to_promote)
+                self.save_to_disk_cache(
+                    lookup_info_to_demote.article_name, compressed_article_to_demote
+                )
+                self.buffer[
+                    lookup_info_to_demote.buffer_offset
+                ] = compressed_article_to_promote
+                lookup_info_to_demote.buffer_offset = ON_DISK
+                lookup_info_to_promote.buffer_offset = (
+                    lookup_info_to_demote.buffer_offset
+                )
 
-	def remove_from_disk_cache(self, article: str):
-		filepath = f"cache/{article}"
-		file_size = os.path.getsize(filepath)
-		os.remove(filepath)
-		self.disk_used -= file_size
+    def fetch_from_origin(self, article: str) -> bytes:
+        with urlopen(f"{self.origin_url}/{article}") as response:
+            return response.read()
 
-	def save_to_disk_cache(self, article: str, article_raw_bytes: bytes) -> bool:
-		try:
-			with open(f"cache/{article}", "wb") as cache_file:
-				cache_file.write(article_raw_bytes)
-				self.disk_used += len(article_raw_bytes)
-				return True
-		except IOError:
-			return False
+    def remove_from_disk_cache(self, article: str):
+        filepath = f"cache/{article}"
+        file_size = os.path.getsize(filepath)
+        os.remove(filepath)
+        self.disk_used -= file_size
 
-	@staticmethod
-	def get_from_disk_cache(article: str) -> bytes:
-		with open(f"cache/{article}", "rb") as fd:
-			return fd.read()
+    def save_to_disk_cache(self, article: str, article_raw_bytes: bytes) -> bool:
+        try:
+            with open(f"cache/{article}", "wb") as cache_file:
+                cache_file.write(article_raw_bytes)
+                self.disk_used += len(article_raw_bytes)
+                return True
+        except IOError:
+            return False
 
-	@staticmethod
-	def compress_article(article_raw_bytes: bytes):
-		return gzip.compress(article_raw_bytes)
+    @staticmethod
+    def get_from_disk_cache(article: str) -> bytes:
+        with open(f"cache/{article}", "rb") as fd:
+            return fd.read()
+
+    @staticmethod
+    def compress_article(article_raw_bytes: bytes):
+        return gzip.compress(article_raw_bytes)
 
 
 if __name__ == "__main__":
-	cache = Cache()
-	cache.get("50_Cent")
-	cache.get("Shakira")
+    cache = Cache()
+    cache.get("50_Cent")
+    cache.get("Shakira")
