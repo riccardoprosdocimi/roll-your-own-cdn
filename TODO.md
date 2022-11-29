@@ -12,3 +12,6 @@ DONE:
 
 
 Can we assume client is capable of accepting a gzip compressed file using the Content-Encoding: gzip header?
+
+Add another layer of indirection by not using article names anywhere internally within the cache. Have a dictionary
+at the entry which maps a string to an int or something which is lighter to duplicate within a LookupInfo object
