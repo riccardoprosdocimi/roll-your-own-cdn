@@ -1,10 +1,11 @@
 import argparse
 import csv
-import gzip
 import os
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import urlopen
+
+import utils
 
 ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 ORIGIN_PORT = "8080"
@@ -37,7 +38,7 @@ def main():
             try:
                 path = quote(row["article"].replace(" ", "_"))
                 article = fetch_from_origin(path)
-                compressed_article = gzip.compress(article)
+                compressed_article = utils.compress_article(article)
                 with open(f"cache/{path}", "wb") as cache_file:
                     cache_file.write(compressed_article)
             except HTTPError as e:

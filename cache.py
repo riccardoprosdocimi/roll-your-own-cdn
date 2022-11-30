@@ -74,14 +74,17 @@ class RepliCache:
 
         print("Cache built")
 
-    def get(self, article: str) -> bytes:
+    def get(self, article: str) -> (bool, bytes):
         # Strip away leading slash from URLs
         if article[0] == "/":
             article = article[1:]
 
+        if article not in self.articles:
+            return False, None
+
         lookup_info: LookupInfo = self.articles[article]
-        print(lookup_info)
         lookup_info.increment_views()
+        print(lookup_info)
 
         if lookup_info.buffer_offset == NOT_CACHED:
             # (CACHE MISS) fetch from origin and cache to disk
@@ -92,21 +95,21 @@ class RepliCache:
             compressed_article = utils.compress_article(article_raw_bytes)
 
             # Optimistically cache it to disk if we have the space
-            if self.add(article, article_raw_bytes, self.articles[article]) == NOT_CACHED:
-                self.attempt_evict_and_add(article, article_raw_bytes)
+            if self.add(article, compressed_article, self.articles[article].views).buffer_offset == NOT_CACHED:
+                self.attempt_evict_and_add(article, compressed_article)
 
-            return compressed_article
+            return True, compressed_article
         elif lookup_info.buffer_offset == ON_DISK:
             # (DISK CACHE HIT) fetch from disk and see if it qualifies for promotion
             print(f"{article}: Serving from disk cache")
 
             compressed_article = self.get_from_disk_cache(article)
-            return compressed_article
+            return True, compressed_article
         else:
             # (IN-MEMORY CACHE HIT) fetch from in-memory cache
             print(f"{article}: Serving from in-memory cache")
 
-            return self.buffer[lookup_info.buffer_offset]
+            return True, self.buffer[lookup_info.buffer_offset]
 
     def add(self, article: str, article_raw_bytes: bytes, views: int) -> LookupInfo:
         buffer_offset = self.add_to_in_memory_cache(article_raw_bytes)
