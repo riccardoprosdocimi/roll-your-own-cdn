@@ -9,6 +9,7 @@ DNS_SERVER_IP = "97.107.140.73"
 
 CDN_NAME = "cs5700cdn.example.com"
 TTL = 60
+CLIENT_IPS = set()
 
 REPLICAS = [
     ("proj4-repl1.5700.network", "139.144.30.25"),
@@ -25,6 +26,7 @@ class Resolver:
     @staticmethod
     def resolve(request, handler):
         if request.q.qname == CDN_NAME:
+            CLIENT_IPS.add(handler.client_address)
             response = request.reply()
             replica_domain_name, replica_ip = REPLICAS[0]
             response.add_answer(*RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
