@@ -1,39 +1,43 @@
 #!/usr/bin/env python3
 import argparse
-from http.server import BaseHTTPRequestHandler, HTTPServer
-from functools import lru_cache
-from urllib.request import urlopen
-from utils import get_local_ip
+import http
 import socket
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+from cache import RepliCache
+from utils import get_local_ip
 
 PORT = 25016
 ORIGIN_PORT = "8080"
 ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 GRADING_BEACON_PATH = "/grading/beacon"
 
+cache_test_mode = True
+if cache_test_mode:
+    print("Cache running in test mode")
+
+repli_cache = RepliCache(test_mode=cache_test_mode)
+
 
 class CdnHttpHandler(BaseHTTPRequestHandler):
-
     def do_GET(self):
         if self.path == GRADING_BEACON_PATH:
             self.send_response(204)
             self.send_header("Host", socket.gethostname())
             self.end_headers()
         else:
-            data = self.get_data(self.path)
+            found, data = repli_cache.get(self.path)
+            if not found:
+                self.send_error(code=http.HTTPStatus.NOT_FOUND)
+                return
+
             self.send_response(200)
             self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Encoding", "gzip")
             self.send_header("Content-Length", str(len(data)))
             self.send_header("Host", socket.gethostname())
             self.end_headers()
             self.wfile.write(data)
-
-    @staticmethod
-    @lru_cache
-    def get_data(path: str) -> bytes:
-        print("Not cached")
-        with urlopen("http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + path) as response:
-            return response.read()
 
 
 def parse_args():
@@ -51,11 +55,11 @@ def main():
     ORIGIN_SERVER = args.o
     web_server = HTTPServer((get_local_ip(), port), CdnHttpHandler)
     try:
+        print(f"Starting replica at http://{get_local_ip()}:{port}")
         web_server.serve_forever()
     except KeyboardInterrupt:
-        pass
-    web_server.server_close()
-    print("server stopped")
+        web_server.server_close()
+        print("Server stopped")
 
 
 if __name__ == "__main__":
