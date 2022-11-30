@@ -1,7 +1,13 @@
 #!/usr/bin/env bash
 DNS_SERVER=proj4-dns.5700.network
 DNS_DIR='dns_server'
-HTTP_REPLICAS=(proj4-repl1.5700.network)
+HTTP_REPLICAS=(proj4-repl1.5700.network,
+               proj4-repl2.5700.network,
+               proj4-repl3.5700.network,
+               proj4-repl4.5700.network,
+               proj4-repl5.5700.network,
+               proj4-repl6.5700.network,
+               proj4-repl7.5700.network)
 HTTP_DIR='http_server'
 
 while getopts p:o:n:u:i: flag
@@ -31,7 +37,7 @@ do
 	echo "Cleaning up existing directories..."
 	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
 	echo "Copying server file..."
-	scp -i $keyfile httpserver utils.py pageviews.csv build_cache.py $username@$replica:~/$HTTP_DIR/
+	scp -i $keyfile httpserver utils.py pageviews.csv build_cache.py cache.py $username@$replica:~/$HTTP_DIR/
 	echo "Fetching articles for caching"
 	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; python3 build_cache.py -o $origin"
 	echo "Cache built"
