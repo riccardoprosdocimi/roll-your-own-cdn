@@ -27,9 +27,9 @@ class LookupInfo:
         self.views += 1
 
 
-class Cache:
+class RepliCache:
     def __init__(self, origin_url: str = DEFAULT_ORIGIN_URL, test_mode: bool = False):
-        self.views = {}
+        self.articles = {}
         self.heap = []
         self.buffer = []
         self.origin_url = origin_url
@@ -70,10 +70,17 @@ class Cache:
                         os.remove(f"cache/{article}")
                 else:
                     lookup_info = LookupInfo(views, NOT_CACHED, article)
-                    self.views[article] = lookup_info
+                    self.articles[article] = lookup_info
+
+        print("Cache built")
 
     def get(self, article: str) -> bytes:
-        lookup_info: LookupInfo = self.views[article]
+        # Strip away leading slash from URLs
+        if article[0] == "/":
+            article = article[1:]
+
+        lookup_info: LookupInfo = self.articles[article]
+        print(lookup_info)
         lookup_info.increment_views()
 
         if lookup_info.buffer_offset == NOT_CACHED:
@@ -85,7 +92,7 @@ class Cache:
             compressed_article = utils.compress_article(article_raw_bytes)
 
             # Optimistically cache it to disk if we have the space
-            if self.add(article, article_raw_bytes, self.views[article]) == NOT_CACHED:
+            if self.add(article, article_raw_bytes, self.articles[article]) == NOT_CACHED:
                 self.attempt_evict_and_add(article, article_raw_bytes)
 
             return compressed_article
@@ -109,7 +116,7 @@ class Cache:
         lookup_info = LookupInfo(views, buffer_offset, article)
         if lookup_info.buffer_offset != NOT_CACHED:
             self.heap.append(lookup_info)
-            self.views[article] = lookup_info
+            self.articles[article] = lookup_info
 
         return lookup_info
 
@@ -140,7 +147,7 @@ class Cache:
 
         :return: buffer_offset: offset within the in-memory buffer that the article occupied
         """
-        lookup_info = self.views[article]
+        lookup_info = self.articles[article]
         self.memory_used -= len(self.buffer[lookup_info.buffer_offset])
         self.buffer[lookup_info.buffer_offset] = None
         return lookup_info.buffer_offset
@@ -180,7 +187,7 @@ class Cache:
         """
         heapq.heapify(self.heap)
         lookup_info_to_evict: LookupInfo = heapq.heappop(self.heap)
-        lookup_info_to_promote: LookupInfo = self.views[article_name_to_promote]
+        lookup_info_to_promote: LookupInfo = self.articles[article_name_to_promote]
 
         eligible = lookup_info_to_evict.views < lookup_info_to_promote.views
 
@@ -286,7 +293,7 @@ class Cache:
 
 
 if __name__ == "__main__":
-    cache = Cache(test_mode=True)
+    cache = RepliCache(test_mode=True)
     print(cache.memory_used // 1024 / 1024, cache.disk_used // 1024 / 1024)
 
     from timeit import default_timer as timer
