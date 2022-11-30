@@ -11,7 +11,7 @@ DEFAULT_ORIGIN_URL = "http://cs5700cdnorigin.ccs.neu.edu:8080"
 
 NOT_CACHED = -1
 ON_DISK = -2
-BUFFER_OFFSET_AUTO = -3
+APPEND = -3
 
 
 @dataclass(order=True)
@@ -114,11 +114,11 @@ class Cache:
         return lookup_info
 
     def add_to_in_memory_cache(
-        self, article_raw_bytes: bytes, buffer_offset: int = BUFFER_OFFSET_AUTO
+        self, article_raw_bytes: bytes, buffer_offset: int = APPEND
     ) -> int:
         if self.fits_in_memory_cache(article_raw_bytes):
             self.memory_used += len(article_raw_bytes)
-            if buffer_offset == BUFFER_OFFSET_AUTO:
+            if buffer_offset == APPEND:
                 self.buffer.append(article_raw_bytes)
                 return len(self.buffer) - 1
             else:
