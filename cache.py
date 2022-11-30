@@ -59,7 +59,7 @@ class Cache:
                 if os.path.exists(f"cache/{article}"):
                     compressed_article = self.get_from_disk_cache(article)
 
-                    lookup_info = self.put(article, compressed_article, views)
+                    lookup_info = self.add(article, compressed_article, views)
                     if lookup_info.buffer_offset == NOT_CACHED:
                         # Don't break, continue so that any potentially
                         # smaller article down the line can be cached.
@@ -85,8 +85,8 @@ class Cache:
             compressed_article = utils.compress_article(article_raw_bytes)
 
             # Optimistically cache it to disk if we have the space
-            if self.put(article, article_raw_bytes, self.views[article]) == NOT_CACHED:
-                self.attempt_promotion(article, article_raw_bytes)
+            if self.add(article, article_raw_bytes, self.views[article]) == NOT_CACHED:
+                self.attempt_evict_and_add(article, article_raw_bytes)
 
             return compressed_article
         elif lookup_info.buffer_offset == ON_DISK:
@@ -101,7 +101,7 @@ class Cache:
 
             return self.buffer[lookup_info.buffer_offset]
 
-    def put(self, article: str, article_raw_bytes: bytes, views: int) -> LookupInfo:
+    def add(self, article: str, article_raw_bytes: bytes, views: int) -> LookupInfo:
         buffer_offset = self.add_to_in_memory_cache(article_raw_bytes)
         if buffer_offset == NOT_CACHED:
             buffer_offset = self.add_to_disk_cache(article, article_raw_bytes)
@@ -160,7 +160,7 @@ class Cache:
         os.remove(filepath)
         self.disk_used -= file_size
 
-    def attempt_promotion(
+    def attempt_evict_and_add(
         self, article_name_to_promote: str, compressed_article_to_promote: bytes
     ) -> bool:
         """
@@ -193,56 +193,84 @@ class Cache:
                 lookup_info_to_evict.buffer_offset
             ]
 
-            swap_possible_in_memory = (
-                self.memory_used
-                - len(compressed_article_to_evict)
-                + len(compressed_article_to_promote)
-            ) <= self.max_memory_size
+            return self.attempt_evict_and_add_in_memory(
+                article_name_to_promote,
+                lookup_info_to_promote,
+                compressed_article_to_promote,
+                lookup_info_to_evict,
+                compressed_article_to_evict,
+            ) or self.attempt_evict_and_add_on_disk(
+                article_name_to_promote,
+                lookup_info_to_promote,
+                compressed_article_to_promote,
+                lookup_info_to_evict,
+                compressed_article_to_evict,
+            )
 
-            if swap_possible_in_memory:
-                lookup_info_to_promote.buffer_offset = (
-                    lookup_info_to_evict.buffer_offset
-                )
-                lookup_info_to_evict.buffer_offset = NOT_CACHED
+    def attempt_evict_and_add_in_memory(
+        self,
+        article_name_to_promote: str,
+        lookup_info_to_promote: LookupInfo,
+        compressed_article_to_promote: bytes,
+        lookup_info_to_evict: LookupInfo,
+        compressed_article_to_evict: bytes,
+    ) -> bool:
+        swap_possible_in_memory = (
+            self.memory_used
+            - len(compressed_article_to_evict)
+            + len(compressed_article_to_promote)
+        ) <= self.max_memory_size
 
-                deleted_buffer_offset = self.remove_from_in_memory_cache(
-                    lookup_info_to_evict.article_name
-                )
-                self.add_to_in_memory_cache(
-                    compressed_article_to_promote,
-                    deleted_buffer_offset,
-                )
-
-                print(
-                    f"Promoted {article_name_to_promote}, evicted {lookup_info_to_evict.article_name}"
-                )
-
-                return True
-
-            swap_possible_on_disk = (
-                self.disk_used
-                - len(compressed_article_to_promote)
-                + len(compressed_article_to_evict)
-            ) <= self.max_disk_size
-
-            if swap_possible_on_disk:
-                lookup_info_to_evict.buffer_offset = NOT_CACHED
-                lookup_info_to_promote.buffer_offset = ON_DISK
-
-                # This is the damn reason why we need to have a redundant
-                # reference to article_name within LookupInfo.
-                self.remove_from_disk_cache(lookup_info_to_evict.article_name)
-                self.add_to_disk_cache(
-                    lookup_info_to_promote.article_name, compressed_article_to_promote
-                )
-
-                print(
-                    f"Promoted {article_name_to_promote}, evicted {lookup_info_to_evict.article_name}"
-                )
-
-                return True
-
+        if not swap_possible_in_memory:
             return False
+
+        lookup_info_to_promote.buffer_offset = lookup_info_to_evict.buffer_offset
+        lookup_info_to_evict.buffer_offset = NOT_CACHED
+
+        deleted_buffer_offset = self.remove_from_in_memory_cache(
+            lookup_info_to_evict.article_name
+        )
+        self.add_to_in_memory_cache(
+            compressed_article_to_promote,
+            deleted_buffer_offset,
+        )
+
+        print(
+            f"Promoted {article_name_to_promote}, evicted {lookup_info_to_evict.article_name}"
+        )
+        return True
+
+    def attempt_evict_and_add_on_disk(
+        self,
+        article_name_to_promote: str,
+        lookup_info_to_promote: LookupInfo,
+        compressed_article_to_promote: bytes,
+        lookup_info_to_evict: LookupInfo,
+        compressed_article_to_evict: bytes,
+    ):
+        swap_possible_on_disk = (
+            self.disk_used
+            - len(compressed_article_to_promote)
+            + len(compressed_article_to_evict)
+        ) <= self.max_disk_size
+
+        if not swap_possible_on_disk:
+            return False
+
+        lookup_info_to_evict.buffer_offset = NOT_CACHED
+        lookup_info_to_promote.buffer_offset = ON_DISK
+
+        # This is the damn reason why we need to have a redundant
+        # reference to article_name within LookupInfo.
+        self.remove_from_disk_cache(lookup_info_to_evict.article_name)
+        self.add_to_disk_cache(
+            lookup_info_to_promote.article_name, compressed_article_to_promote
+        )
+
+        print(
+            f"Promoted {article_name_to_promote}, evicted {lookup_info_to_evict.article_name}"
+        )
+        return True
 
     def fetch_from_origin(self, article: str) -> bytes:
         with urlopen(f"{self.origin_url}/{article}") as response:
