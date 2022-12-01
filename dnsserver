@@ -9,36 +9,32 @@ DNS_SERVER_IP = "97.107.140.73"
 
 CDN_NAME = "cs5700cdn.example.com"
 TTL = 60
-CLIENT_IPS = set()
-
-REPLICAS = [
-    ("proj4-repl1.5700.network", "139.144.30.25"),
-    ("proj4-repl2.5700.network", "173.255.210.124"),
-    ("proj4-repl3.5700.network", "139.144.69.56"),
-    ("proj4-repl4.5700.network", "185.3.95.25"),
-    ("proj4-repl5.5700.network", "139.162.83.107"),
-    ("proj4-repl6.5700.network", "192.46.211.228"),
-    ("proj4-repl7.5700.network", "170.187.240.5")
-]
 
 
 class Resolver:
+    def __init__(self, replicas: list) -> None:
+        CLIENT_IPS: set = set()
+        REPLICAS = replicas
+
     @staticmethod
     def resolve(request, handler):
         if request.q.qname == CDN_NAME:
-            CLIENT_IPS.add(handler.client_address)
+            Resolver.CLIENT_IPS.add(handler.client_address)
             response = request.reply()
-            replica_domain_name, replica_ip = REPLICAS[0]
-            response.add_answer(*RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
+            replica_domain_name, replica_ip = Resolver.REPLICAS[0]
+            response.add_answer(
+                *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
             return response
-        
+
         raise DNSError(f"Not authoritative for {request.q.qname}")
 
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p", type=int, help="the port number the server will bind to")
-    parser.add_argument("-n", type=str, help="the CDN-specific name that the server translates to an IP.")
+    parser.add_argument(
+        "-p", type=int, help="the port number the server will bind to")
+    parser.add_argument(
+        "-n", type=str, help="the CDN-specific name that the server translates to an IP.")
     args = parser.parse_args()
     return args
 
@@ -48,9 +44,18 @@ def main():
     args = parse_args()
     port = args.p
     CDN_NAME = args.n
-    resolver = Resolver()
+    resolver = Resolver([
+        ("proj4-repl1.5700.network", "139.144.30.25"),
+        ("proj4-repl2.5700.network", "173.255.210.124"),
+        ("proj4-repl3.5700.network", "139.144.69.56"),
+        ("proj4-repl4.5700.network", "185.3.95.25"),
+        ("proj4-repl5.5700.network", "139.162.83.107"),
+        ("proj4-repl6.5700.network", "192.46.211.228"),
+        ("proj4-repl7.5700.network", "170.187.240.5")
+    ])
     logger = DNSLogger(prefix=False)
-    server = DNSServer(resolver, logger=logger, port=port, address=get_local_ip())
+    server = DNSServer(resolver, logger=logger,
+                       port=port, address=get_local_ip())
     try:
         server.start()
     except KeyboardInterrupt:
