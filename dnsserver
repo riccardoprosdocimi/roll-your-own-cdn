@@ -3,6 +3,7 @@ import argparse
 from dnslib.server import DNSServer, DNSLogger, DNSError
 from dnslib.dns import RR
 from utils import get_local_ip
+from random import randrange
 
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
@@ -28,7 +29,8 @@ class Resolver:
         if request.q.qname == CDN_NAME:
             Resolver.CLIENT_IPS.add(handler.client_address)
             response = request.reply()
-            replica_domain_name, replica_ip = Resolver.REPLICAS[0]
+            random_replica = randrange(len(Resolver.REPLICAS))
+            replica_domain_name, replica_ip = Resolver.REPLICAS[random_replica]
             response.add_answer(
                 *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
             return response
