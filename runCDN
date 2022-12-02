@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 DNS_SERVER=proj4-dns.5700.network
 DNS_DIR='dns_server'
-HTTP_REPLICAS=(proj4-repl1.5700.network,
-               proj4-repl2.5700.network,
-               proj4-repl3.5700.network,
-               proj4-repl4.5700.network,
-               proj4-repl5.5700.network,
-               proj4-repl6.5700.network,
+HTTP_REPLICAS=(proj4-repl1.5700.network
+               proj4-repl2.5700.network
+               proj4-repl3.5700.network
+               proj4-repl4.5700.network
+               proj4-repl5.5700.network
+               proj4-repl6.5700.network
                proj4-repl7.5700.network)
 HTTP_DIR='http_server'
 
@@ -32,6 +32,6 @@ for replica in "${HTTP_REPLICAS[@]}"
 do
 	echo "Attempting to run replica: $username@$replica...."
 	ssh -i $keyfile $username@$replica nohup $HTTP_DIR/httpserver -p $port -o $origin 2>&1 &>logs.txt &
-	echo "Repica running at: $username@$replica"
+	echo "Replica running at: $username@$replica"
 done
 echo "All replicas running!"
