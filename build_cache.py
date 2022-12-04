@@ -1,6 +1,7 @@
 import argparse
 import csv
 import os
+import socket
 from urllib.error import HTTPError
 from urllib.parse import quote
 from urllib.request import urlopen
@@ -13,7 +14,7 @@ ORIGIN_PORT = "8080"
 
 def fetch_from_origin(path: str) -> bytes:
     with urlopen(
-        "http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + "/" + path
+            "http://" + ORIGIN_SERVER + ":" + ORIGIN_PORT + "/" + path
     ) as response:
         return response.read()
 
@@ -45,7 +46,7 @@ def main():
                 print(e)
                 print(f"Error for this article: {row['article']}")
             except IOError:
-                print("disk maxed out!!!")
+                print(f"Caching complete: {socket.gethostname()}")
                 break
 
 
