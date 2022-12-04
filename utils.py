@@ -1,5 +1,8 @@
 import gzip
 import socket
+from vendor import maxminddb
+
+DB = maxminddb.open_database('GeoLite2-City.mmdb')
 
 
 def get_local_ip():
@@ -12,3 +15,9 @@ def get_local_ip():
 
 def compress_article(article_raw_bytes: bytes) -> bytes:
     return gzip.compress(article_raw_bytes)
+
+
+def locate_ip(client_ip):
+    latitude = DB.get(client_ip)['location']['latitude']
+    longitude = DB.get(client_ip)['location']['longitude']
+    return latitude, longitude
