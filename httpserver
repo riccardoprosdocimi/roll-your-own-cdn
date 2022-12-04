@@ -2,6 +2,8 @@
 import argparse
 import http
 import socket
+import subprocess
+import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 
 from cache import RepliCache
@@ -38,6 +40,19 @@ class CdnHttpHandler(BaseHTTPRequestHandler):
             self.send_header("Host", socket.gethostname())
             self.end_headers()
             self.wfile.write(data)
+
+
+def measure(client_ips: list) -> dict:
+    measurements = {}
+    scamper_output = subprocess.check_output(["scamper", "-c", "ping", "-i", *client_ips, "-O", "json"]).decode()
+    scamper_output = scamper_output.split('\n')[1:-2]
+    for line in scamper_output:
+        json_object = json.loads(line)
+        dst_ip = json_object['dst']
+        rtt = json_object['statistics']['avg']
+        measurements[dst_ip] = rtt
+    print(measurements)
+    return measurements
 
 
 def parse_args():
