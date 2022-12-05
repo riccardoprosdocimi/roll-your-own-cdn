@@ -11,6 +11,9 @@ from dataclasses import dataclass, field
 import time
 from urllib import request
 import json
+from replicas import REPLICAS
+import threading
+
 
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
@@ -27,8 +30,8 @@ class Resolver:
         if request.q.qname == CDN_NAME:
             Resolver.CLIENT_IPS.add(handler.client_address)
             response = request.reply()
-            random_replica = randrange(len(Resolver.REPLICAS))
-            replica_domain_name, replica_ip = Resolver.REPLICAS[random_replica]
+            random_replica = randrange(len(REPLICAS))
+            replica_domain_name, replica_ip = REPLICAS[random_replica]
             response.add_answer(
                 *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
             return response
@@ -40,48 +43,60 @@ class Resolver:
 class DNSProxy:
     server: DNSServer
     resolver: Resolver
-    is_running: bool
     client_replica_map: dict = field(default_factory=dict)
 
     def run(self):
         try:
             self.server.start_thread()
             print('DNS server running.')
-            measurements = self.get_measurements()
-            self.client_replica_map = self.calc_client_replicas(
-                measurements)
-            print('\n\nFinal replica map', self.client_replica_map)
-
-            while self.is_running:
-                # this just keeps the thing alive...
-                time.sleep(5)
+            measurements_thread = threading.Thread(
+                target=self._get_all_measurements)
+            measurements_thread.start()
+            measurements_thread.join()
         except KeyboardInterrupt:
             self.stop()
 
     def stop(self):
-        self.is_running = False
         self.server.stop()
         print('\nDNS server stopped.')
 
-    def get_measurements(self) -> list:
-        measurements: list = list()
-        for replica in self.resolver.REPLICAS:
-            req_url = replica[0] + '/measure'
-            client_list = list(self.resolver.CLIENT_IPS)
-            body = json.dumps(client_list)
-            # res = request.urlopen(replica[0] + '/measure')
-            # data = res.read()
-            # json_data = json.loads(data.decode('utf-8'))
-            res = {"rtts": {
-                "0.0.0.0": str(randrange(0, 50)),
-                "1.1.1.1": str(randrange(0, 50)),
-                "2.2.2.2": str(randrange(0, 50)),
-            }, "cpu": str(randrange(0, 100))}
-            res["replica"] = replica
-            measurements.append(res)
-        return measurements
+    def _get_all_measurements(self) -> None:
+        '''
+        spin a thread to get measurements
+        as long as we have data in the measurements list, calculate the best replica
+        when the other threads return the work, we'll be able to get better replicas
+        '''
+        while True:
+            measurement_queue = list()
+            for replica in REPLICAS:
+                measurement_thread = threading.Thread(
+                    target=self._request_measurement, args=(replica, measurement_queue))
+                measurement_thread.start()
+                measurement_thread.join()
+            while len(measurement_queue) > 0:
+                cal_thread = threading.Thread(
+                    target=self._set_best_replicas, args=(measurement_queue))
+                cal_thread.join()
+                measurement_queue = list()  # reset_queue
+            time.sleep(3)
 
-    def calc_client_replicas(self, replica_measurements: list):
+    def _request_measurement(self, replica: tuple, measurement_queue: list) -> json:
+        # format request
+        req = request.Request('http://' + replica[0] + '/measure')
+        req.add_header('Content-Type', 'application/json; charset=utf-8')
+        client_list = list(self.resolver.CLIENT_IPS)
+        body = json.dumps(client_list)
+        body_bytes = body.encode('utf-8')
+        # make request and process data
+        res = request.urlopen(req, body_bytes)
+        data = res.read()
+        json_data = json.loads(data.decode('utf-8'))
+        json_data["replica"] = replica
+        print('\nJSON DATA for replica:' + replica[0], json_data)
+        # add json response to measurement queue
+        measurement_queue.append(json_data)
+
+    def _set_best_replicas(self, replica_measurements: list) -> None:
         '''
         - Iterate over each replica measurement.
         - For each replica measurement, get a client ip. 
@@ -103,8 +118,8 @@ class DNSProxy:
                     client_key, best_replica)
                 if int(replica['rtts'][client_key]) < int(client_replica['rtt']):
                     client_replica_map[client_key] = best_replica
-
-        return client_replica_map
+            self.client_replica_map = client_replica_map
+            print('\n\nFinal replica map', self.client_replica_map)
 
 
 def parse_args():
