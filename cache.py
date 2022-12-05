@@ -9,8 +9,8 @@ import utils
 
 DEFAULT_ORIGIN_URL = "http://cs5700cdnorigin.ccs.neu.edu:8080"
 
-NOT_CACHED = -1
-ON_DISK = -2
+ON_DISK = -1
+NOT_CACHED = -2
 APPEND = -3
 
 

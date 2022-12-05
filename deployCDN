@@ -30,17 +30,13 @@ scp -i $keyfile dnsserver utils.py $username@$DNS_SERVER:~/$DNS_DIR/
 echo "Successfully deployed DNS Server: $username@$DNS_SERVER"
 
 # CDN replica deployment
-echo "Deploying CDN replicas..."
 for replica in "${HTTP_REPLICAS[@]}"
 do
 	echo "Deploying Replica: $username@$replica...."
-	echo "Cleaning up existing directories..."
 	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
-	echo "Copying server file..."
-	scp -i $keyfile httpserver utils.py pageviews.csv build_cache.py cache.py $username@$replica:~/$HTTP_DIR/
-	echo "Fetching articles for caching"
-	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; python3 build_cache.py -o $origin"
-	echo "Cache built"
-	echo "Deployment complete for replica: $username@$replica\n"
+	scp -q -i $keyfile httpserver utils.py pageviews.csv build_cache.py cache.py $username@$replica:~/$HTTP_DIR/
+	echo "Building cache on $replica"
+	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; python3 build_cache.py -o $origin" &
 done
+wait
 echo "All replicas deployed!"
