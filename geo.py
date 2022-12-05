@@ -7,10 +7,10 @@ RADIUS_OF_EARTH = 6373  # km
 REPLICA_LOCATIONS = dict()
 
 
-def calculate_replica_locations():
+def calculate_replica_locations() -> None:
     for replica in REPLICAS:
         lat, lon = locate_ip(replica[1])
-        REPLICA_LOCATIONS[replica[1]] = lat,
+        REPLICA_LOCATIONS[replica[1]] = lat, lon
 
 
 calculate_replica_locations()
