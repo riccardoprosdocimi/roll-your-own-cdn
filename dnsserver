@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
 import argparse
-from dnslib.server import DNSServer, DNSLogger, DNSError
+from random import randrange
+
 from dnslib.dns import RR
+from dnslib.server import DNSServer, DNSLogger, DNSError
+
 from utils import get_local_ip
 from random import randrange
+from dataclasses import dataclass, field
+import time
+from urllib import request
+import json
 
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
@@ -29,6 +36,77 @@ class Resolver:
         raise DNSError(f"Not authoritative for {request.q.qname}")
 
 
+@dataclass()
+class DNSProxy:
+    server: DNSServer
+    resolver: Resolver
+    is_running: bool
+    client_replica_map: dict = field(default_factory=dict)
+
+    def run(self):
+        try:
+            self.server.start_thread()
+            print('DNS server running.')
+            measurements = self.get_measurements()
+            self.client_replica_map = self.calc_client_replicas(
+                measurements)
+            print('\n\nFinal replica map', self.client_replica_map)
+
+            while self.is_running:
+                # this just keeps the thing alive...
+                time.sleep(5)
+        except KeyboardInterrupt:
+            self.stop()
+
+    def stop(self):
+        self.is_running = False
+        self.server.stop()
+        print('\nDNS server stopped.')
+
+    def get_measurements(self) -> list:
+        measurements: list = list()
+        for replica in self.resolver.REPLICAS:
+            req_url = replica[0] + '/measure'
+            client_list = list(self.resolver.CLIENT_IPS)
+            body = json.dumps(client_list)
+            # res = request.urlopen(replica[0] + '/measure')
+            # data = res.read()
+            # json_data = json.loads(data.decode('utf-8'))
+            res = {"rtts": {
+                "0.0.0.0": str(randrange(0, 50)),
+                "1.1.1.1": str(randrange(0, 50)),
+                "2.2.2.2": str(randrange(0, 50)),
+            }, "cpu": str(randrange(0, 100))}
+            res["replica"] = replica
+            measurements.append(res)
+        return measurements
+
+    def calc_client_replicas(self, replica_measurements: list):
+        '''
+        - Iterate over each replica measurement.
+        - For each replica measurement, get a client ip. 
+        - Store the client ip as a key in the client replica map.
+        - Get the rtt for that replica client.
+        _ If the rtt is less than the previous replica rtt, 
+            set that replica as the value in the client replica map.
+        '''
+        client_replica_map = {}
+        for replica in replica_measurements:
+            # print('\nReplica measurements', replica)
+            for client_key in replica['rtts']:
+                best_replica = {
+                    'replica': replica['replica'],
+                    'rtt': int(replica['rtts'][client_key])
+                }
+                # Upsert client ip as key in client_replica_map
+                client_replica = client_replica_map.setdefault(
+                    client_key, best_replica)
+                if int(replica['rtts'][client_key]) < int(client_replica['rtt']):
+                    client_replica_map[client_key] = best_replica
+
+        return client_replica_map
+
+
 def parse_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -48,13 +126,15 @@ def main():
     logger = DNSLogger(prefix=False)
     server = DNSServer(resolver, logger=logger,
                        port=port, address=get_local_ip())
-    try:
-        server.start()
-    except KeyboardInterrupt:
-        pass
-    server.stop()
-    print("Server stopped")
+    proxy = DNSProxy(server, resolver, True)
+    proxy.run()
+    # try:
+    #     server.start()
+    # except KeyboardInterrupt:
+    #     pass
+    # server.stop()
+    # print("Server stopped")
 
 
-# if __name__ == "__main__":
-#     main()
+if __name__ == "__main__":
+    main()
