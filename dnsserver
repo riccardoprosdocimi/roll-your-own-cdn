@@ -62,9 +62,9 @@ class DNSProxy:
 
     def _get_all_measurements(self) -> None:
         '''
-        spin a thread to get measurements
-        as long as we have data in the measurements list, calculate the best replica
-        when the other threads return the work, we'll be able to get better replicas
+        - Keep a queue/list of measurements.
+        - Spin a thread to request measurements for each thread from each replicate endpoint.
+        - As long as the measurement queue has data, set the best client to replica map.
         '''
         while True:
             measurement_queue = list()
@@ -74,13 +74,20 @@ class DNSProxy:
                 measurement_thread.start()
                 measurement_thread.join()
             while len(measurement_queue) > 0:
-                cal_thread = threading.Thread(
-                    target=self._set_best_replicas, args=(measurement_queue))
-                cal_thread.join()
+                best_replica_thread = threading.Thread(
+                    target=self._set_best_replicas, args=(measurement_queue,))
+                best_replica_thread.start()
+                best_replica_thread.join()
                 measurement_queue = list()  # reset_queue
             time.sleep(3)
 
     def _request_measurement(self, replica: tuple, measurement_queue: list) -> json:
+        '''
+        Make a get request for a replica to get measurements, and add the measurement for this replica
+        to the list of all measurements.
+        Param replica: a replica tuple containing the name and ip of the replica.
+        measurement_queue: a list of all replica measurements. The measurements for this replica will be added to list.
+        '''
         # format request
         req = request.Request('http://' + replica[0] + '/measure')
         req.add_header('Content-Type', 'application/json; charset=utf-8')
@@ -91,6 +98,11 @@ class DNSProxy:
         res = request.urlopen(req, body_bytes)
         data = res.read()
         json_data = json.loads(data.decode('utf-8'))
+        # json_data = {"rtts": {
+        #     "0.0.0.0": str(randrange(0, 50)),
+        #     "1.1.1.1": str(randrange(0, 50)),
+        #     "2.2.2.2": str(randrange(0, 50)),
+        # }, "cpu": str(randrange(0, 100))}
         json_data["replica"] = replica
         print('\nJSON DATA for replica:' + replica[0], json_data)
         # add json response to measurement queue
@@ -98,11 +110,13 @@ class DNSProxy:
 
     def _set_best_replicas(self, replica_measurements: list) -> None:
         '''
+        Sets the client to replica map in state.
+        Logic:
         - Iterate over each replica measurement.
-        - For each replica measurement, get a client ip. 
+        - For each replica measurement, get a client ip.
         - Store the client ip as a key in the client replica map.
         - Get the rtt for that replica client.
-        _ If the rtt is less than the previous replica rtt, 
+        _ If the rtt is less than the previous replica rtt,
             set that replica as the value in the client replica map.
         '''
         client_replica_map = {}
