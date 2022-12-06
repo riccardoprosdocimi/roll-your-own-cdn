@@ -26,7 +26,7 @@ echo "Deploying DNS server..."
 echo "Cleaning up any existing directories/files"
 ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
 echo "Copying DNS files..."
-scp -i $keyfile dnsserver utils.py $username@$DNS_SERVER:~/$DNS_DIR/
+scp -i $keyfile dnsserver GeoLite2-City.mmdb geo.py replicas.py utils.py $username@$DNS_SERVER:~/$DNS_DIR/
 echo "Successfully deployed DNS Server: $username@$DNS_SERVER"
 
 # CDN replica deployment
