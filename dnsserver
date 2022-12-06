@@ -1,12 +1,8 @@
 #!/usr/bin/env python3
 import argparse
-from random import randrange
-
 from dnslib.dns import RR
 from dnslib.server import DNSServer, DNSLogger, DNSError
-
 from utils import get_local_ip
-from random import randrange
 from dataclasses import dataclass, field
 import time
 from urllib import request
@@ -30,8 +26,8 @@ class Resolver:
         if request.q.qname == CDN_NAME:
             Resolver.CLIENT_IPS.add(handler.client_address)
             response = request.reply()
-            random_replica = randrange(len(REPLICAS))
-            replica_domain_name, replica_ip = REPLICAS[random_replica]
+            DNSProxy.client_replica_map
+            replica_domain_name, replica_ip = REPLICAS[]
             response.add_answer(
                 *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
             return response
@@ -72,7 +68,7 @@ class DNSProxy:
                 measurement_thread = threading.Thread(
                     target=self._request_measurement, args=(replica, measurement_queue))
                 measurement_thread.start()
-                measurement_thread.join()
+                measurement_thread.join()  #TODO: join all at the same time
             while len(measurement_queue) > 0:
                 best_replica_thread = threading.Thread(
                     target=self._set_best_replicas, args=(measurement_queue,))

@@ -55,6 +55,7 @@ class CdnHttpHandler(BaseHTTPRequestHandler):
             measure_thread.start()
             avg_cpu_usage = utils.get_avg_cpu_percent()
             measure_thread.join()
+            print(measurements)
 
             response = json.dumps({"rtts": measurements, "cpu": avg_cpu_usage})
             self.send_response(200)
