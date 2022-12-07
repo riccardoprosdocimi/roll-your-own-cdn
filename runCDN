@@ -31,7 +31,7 @@ echo "Setting up CDN replicas..."
 for replica in "${HTTP_REPLICAS[@]}"
 do
 	echo "Attempting to run replica: $username@$replica..."
-	ssh -i $keyfile $username@$replica cd $HTTP_DIR; nohup ./httpserver -p $port -o $origin &>logs.txt &
-	echo "Replica running at: $username@$replica"
+	ssh -i $keyfile $username@$replica; cd $HTTP_DIR; nohup ./httpserver -p $port -o $origin &>logs.txt &
+	echo "Replica running at:" $username@$replica
 done
 echo "All replicas running!"
