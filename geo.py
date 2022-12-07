@@ -14,9 +14,9 @@ def locate_ip(client_ip: str) -> tuple:
 
 
 def calculate_replica_locations() -> None:
-    for replica in REPLICAS:
-        lat, lon = locate_ip(replica[1])
-        REPLICA_LOCATIONS[replica[1]] = lat, lon
+    for replica_ip in REPLICAS.keys():
+        lat, lon = locate_ip(replica_ip)
+        REPLICA_LOCATIONS[replica_ip] = lat, lon
 
 
 calculate_replica_locations()
