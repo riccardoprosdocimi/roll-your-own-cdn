@@ -1,33 +1,39 @@
 #!/usr/bin/env python3
 import argparse
+import threading
+from geo import find_best_replica
 from dnslib.dns import RR
 from dnslib.server import DNSServer, DNSLogger, DNSError
 from utils import get_local_ip
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 import time
 from urllib import request
 import json
 from replicas import REPLICAS
-import threading
 
 
 DNS_SERVER = "localhost"  # "proj4-dns.5700.network"
 DNS_SERVER_IP = "97.107.140.73"
 
 CDN_NAME = "cs5700cdn.example.com"
-TTL = 60
+TTL = 45
 
 
 class Resolver:
     CLIENT_IPS: set = set()
+    CLIENT_REPLICA_MAP: dict = dict()
 
     @staticmethod
     def resolve(request, handler):
         if request.q.qname == CDN_NAME:
-            Resolver.CLIENT_IPS.add(handler.client_address)
+            client = handler.client_address[0]
+            Resolver.CLIENT_IPS.add(client)
             response = request.reply()
-            DNSProxy.client_replica_map
-            replica_domain_name, replica_ip = REPLICAS[]
+            if client in Resolver.CLIENT_REPLICA_MAP.keys():
+                replica = Resolver.CLIENT_REPLICA_MAP[client]
+            else:
+                replica = find_best_replica(client)
+            replica_domain_name, replica_ip = REPLICAS[replica]
             response.add_answer(
                 *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
             return response
@@ -39,7 +45,7 @@ class Resolver:
 class DNSProxy:
     server: DNSServer
     resolver: Resolver
-    client_replica_map: dict = field(default_factory=dict)
+    port: int
 
     def run(self):
         try:
@@ -63,35 +69,43 @@ class DNSProxy:
         - As long as the measurement queue has data, set the best client to replica map.
         '''
         while True:
+            # if len(self.resolver.CLIENT_IPS) == 0:
+            #     time.sleep(3)
+            #     continue
             measurement_queue = list()
+            measurement_thread_queue = list()
+            lock = threading.Lock()
             for replica in REPLICAS:
                 measurement_thread = threading.Thread(
-                    target=self._request_measurement, args=(replica, measurement_queue))
+                    target=self._request_measurement, args=(replica, measurement_queue, lock))
+                measurement_thread_queue.append(measurement_thread)
                 measurement_thread.start()
-                measurement_thread.join()  #TODO: join all at the same time
-            while len(measurement_queue) > 0:
-                best_replica_thread = threading.Thread(
-                    target=self._set_best_replicas, args=(measurement_queue,))
-                best_replica_thread.start()
-                best_replica_thread.join()
-                measurement_queue = list()  # reset_queue
-            time.sleep(3)
+            # join threads
+            for thread in measurement_thread_queue:
+                thread.join()
 
-    def _request_measurement(self, replica: tuple, measurement_queue: list) -> json:
+            # calculate best client to replica
+            if len(measurement_queue) > 0:
+                self._set_best_replicas(measurement_queue)
+            time.sleep(30)
+
+    def _request_measurement(self, replica: tuple, measurement_queue: list, lock: threading.Lock) -> json:
         '''
         Make a get request for a replica to get measurements, and add the measurement for this replica
         to the list of all measurements.
         Param replica: a replica tuple containing the name and ip of the replica.
         measurement_queue: a list of all replica measurements. The measurements for this replica will be added to list.
         '''
-        # format request
-        req = request.Request('http://' + replica[0] + '/measure')
+        # format request to send
+        req = request.Request(
+            'http://' + replica[0] + ':' + str(self.port) + '/measure')
         req.add_header('Content-Type', 'application/json; charset=utf-8')
         client_list = list(self.resolver.CLIENT_IPS)
         body = json.dumps(client_list)
         body_bytes = body.encode('utf-8')
         # make request and process data
         res = request.urlopen(req, body_bytes)
+        # read response data
         data = res.read()
         json_data = json.loads(data.decode('utf-8'))
         # json_data = {"rtts": {
@@ -100,9 +114,9 @@ class DNSProxy:
         #     "2.2.2.2": str(randrange(0, 50)),
         # }, "cpu": str(randrange(0, 100))}
         json_data["replica"] = replica
-        print('\nJSON DATA for replica:' + replica[0], json_data)
         # add json response to measurement queue
-        measurement_queue.append(json_data)
+        with lock:
+            measurement_queue.append(json_data)
 
     def _set_best_replicas(self, replica_measurements: list) -> None:
         '''
@@ -115,9 +129,9 @@ class DNSProxy:
         _ If the rtt is less than the previous replica rtt,
             set that replica as the value in the client replica map.
         '''
+
         client_replica_map = {}
         for replica in replica_measurements:
-            # print('\nReplica measurements', replica)
             for client_key in replica['rtts']:
                 best_replica = {
                     'replica': replica['replica'],
@@ -128,9 +142,7 @@ class DNSProxy:
                     client_key, best_replica)
                 if int(replica['rtts'][client_key]) < int(client_replica['rtt']):
                     client_replica_map[client_key] = best_replica
-            self.client_replica_map = client_replica_map
-            print('\n\nFinal replica map', self.client_replica_map)
-
+            Resolver.CLIENT_REPLICA_MAP = client_replica_map
 
 def parse_args():
     parser = argparse.ArgumentParser()
@@ -151,14 +163,8 @@ def main():
     logger = DNSLogger(prefix=False)
     server = DNSServer(resolver, logger=logger,
                        port=port, address=get_local_ip())
-    proxy = DNSProxy(server, resolver, True)
+    proxy = DNSProxy(server, resolver, port)
     proxy.run()
-    # try:
-    #     server.start()
-    # except KeyboardInterrupt:
-    #     pass
-    # server.stop()
-    # print("Server stopped")
 
 
 if __name__ == "__main__":

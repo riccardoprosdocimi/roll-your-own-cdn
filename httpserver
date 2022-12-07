@@ -17,7 +17,7 @@ ORIGIN_PORT = "8080"
 ORIGIN_SERVER = "cs5700cdnorigin.ccs.neu.edu"
 GRADING_BEACON_PATH = "/grading/beacon"
 
-cache_test_mode = True
+cache_test_mode = False
 if cache_test_mode:
     print("Cache running in test mode")
 

@@ -7,6 +7,12 @@ RADIUS_OF_EARTH = 6373  # km
 REPLICA_LOCATIONS = dict()
 
 
+def locate_ip(client_ip: str) -> tuple:
+    latitude = DB.get(client_ip)['location']['latitude']
+    longitude = DB.get(client_ip)['location']['longitude']
+    return latitude, longitude
+
+
 def calculate_replica_locations() -> None:
     for replica in REPLICAS:
         lat, lon = locate_ip(replica[1])
@@ -14,12 +20,6 @@ def calculate_replica_locations() -> None:
 
 
 calculate_replica_locations()
-
-
-def locate_ip(client_ip: str) -> tuple:
-    latitude = DB.get(client_ip)['location']['latitude']
-    longitude = DB.get(client_ip)['location']['longitude']
-    return latitude, longitude
 
 
 def haversine_distance(lon1: float, lat1: float, lon2: float, lat2: float) -> float:
