@@ -29,7 +29,8 @@ echo "DNS server has stopped"
 
 # clean up
 echo "Cleaning up existing directories/files in the DNS server"
-ssh -i "$keyfile" "$username"@$DNS_SERVER "rm -rf ~/$DNS_DIR"
+# ssh -i "$keyfile" "$username"@$DNS_SERVER "rm -rf ~/$DNS_DIR"
+ssh -i "$keyfile" "$username"@$DNS_SERVER 
 echo "DNS server cleanup completed"
 
 #shut down and clean up HTTP servers
@@ -40,7 +41,8 @@ do
 	ssh -i "$keyfile" "$username"@"$replica" pkill -u $USERNAME python3
 	
     echo "Cleaning up existing directories/files in replica: $username@$replica..."
-    ssh -i "$keyfile" "$username"@"$replica" "rm -rf ~/$HTTP_DIR"
+    # ssh -i "$keyfile" "$username"@"$replica" "rm -rf ~/$HTTP_DIR"
+    ssh -i "$keyfile" "$username"@"$replica"
 done
 echo "Replicas have stopped"
 echo "Replicas cleanup completed"
