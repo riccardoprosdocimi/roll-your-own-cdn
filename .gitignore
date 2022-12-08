@@ -134,4 +134,3 @@ dmypy.json
 # Custom directories
 .vscode/
 .idea/
-cache/
