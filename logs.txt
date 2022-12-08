@@ -1,3 +1,42 @@
+----------------------------------------
+Exception occurred during proce97.107.140.73 - - [07/Dec/2022 22:32:38] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:33:14] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:33:50] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:34:25] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:35:01] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:35:36] "POST /measure HTTP/1.1" 200 -
+Cache built
+Starting replica at http://170.187.240.5:25016
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470318,"usec":245213}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470318, "usec":245327}, "rx":{"sec":1670470318, "usec":476870}, "rtt":231.543, "probe_ipid":18662, "reply_ipid":19891, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470319, "usec":245857}, "rx":{"sec":1670470319, "usec":472924}, "rtt":227.067, "probe_ipid":18193, "reply_ipid":20008, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470320, "usec":246001}, "rx":{"sec":1670470320, "usec":477742}, "rtt":231.741, "probe_ipid":45323, "reply_ipid":20245, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":227.067, "max":231.741, "avg":230.117, "stddev":2.158}}']
+{'76.19.212.57': 230.117}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470353,"usec":869649}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470353, "usec":869868}, "rx":{"sec":1670470354, "usec":94494}, "rtt":224.626, "probe_ipid":19312, "reply_ipid":43454, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470354, "usec":870539}, "rx":{"sec":1670470355, "usec":95642}, "rtt":225.103, "probe_ipid":3679, "reply_ipid":43529, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470355, "usec":870853}, "rx":{"sec":1670470356, "usec":99213}, "rtt":228.360, "probe_ipid":37804, "reply_ipid":44064, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":224.626, "max":228.360, "avg":226.029, "stddev":1.659}}']
+{'76.19.212.57': 226.029}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470389,"usec":494236}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470389, "usec":494478}, "rx":{"sec":1670470389, "usec":717036}, "rtt":222.558, "probe_ipid":14240, "reply_ipid":4973, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470390, "usec":495063}, "rx":{"sec":1670470390, "usec":716758}, "rtt":221.695, "probe_ipid":58975, "reply_ipid":5419, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470391, "usec":495843}, "rx":{"sec":1670470391, "usec":718503}, "rtt":222.660, "probe_ipid":52068, "reply_ipid":5848, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":221.695, "max":222.660, "avg":222.304, "stddev":0.432}}']
+{'76.19.212.57': 222.304}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470425,"usec":103096}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470425, "usec":103216}, "rx":{"sec":1670470425, "usec":330231}, "rtt":227.015, "probe_ipid":18670, "reply_ipid":37627, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470426, "usec":103279}, "rx":{"sec":1670470426, "usec":330761}, "rtt":227.482, "probe_ipid":53963, "reply_ipid":37975, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470427, "usec":103929}, "rx":{"sec":1670470427, "usec":328203}, "rtt":224.274, "probe_ipid":45447, "reply_ipid":38552, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":224.274, "max":227.482, "avg":226.257, "stddev":1.415}}']
+{'76.19.212.57': 226.257}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470460,"usec":728306}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470460, "usec":728600}, "rx":{"sec":1670470460, "usec":953272}, "rtt":224.672, "probe_ipid":45684, "reply_ipid":62241, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470461, "usec":729292}, "rx":{"sec":1670470461, "usec":954430}, "rtt":225.138, "probe_ipid":29585, "reply_ipid":63202, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470462, "usec":729430}, "rx":{"sec":1670470462, "usec":955553}, "rtt":226.123, "probe_ipid":54241, "reply_ipid":63526, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":224.672, "max":226.123, "avg":225.311, "stddev":0.604}}']
+{'76.19.212.57': 225.311}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470496,"usec":352549}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470496, "usec":352686}, "rx":{"sec":1670470496, "usec":579020}, "rtt":226.334, "probe_ipid":42205, "reply_ipid":26178, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470497, "usec":353635}, "rx":{"sec":1670470497, "usec":575766}, "rtt":222.131, "probe_ipid":64088, "reply_ipid":26414, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470498, "usec":353898}, "rx":{"sec":1670470498, "usec":580930}, "rtt":227.032, "probe_ipid":8089, "reply_ipid":27133, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":222.131, "max":227.032, "avg":225.165, "stddev":2.164}}']
+{'76.19.212.57': 225.165}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470597.107.140.73 - - [07/Dec/2022 22:36:12] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:36:48] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:37:23] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470496,"usec":486117}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470496, "usec":486224}, "rx":{"sec":1670470496, "usec":795395}, "rtt":309.171, "probe_ipid":29527, "reply_ipid":33550, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470497, "usec":486411}, "rx":{"sec":1670470497, "usec":799986}, "rtt":313.575, "probe_ipid":46856, "reply_ipid":34091, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470498, "usec":486998}, "rx":{"sec":1670470498, "usec":793332}, "rtt":306.334, "probe_ipid":58859, "reply_ipid":34922, "icmp_type":0, "icmp_code":0},{"fr97.107.140.73 - - [07/Dec/2022 22:37:59] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:38:35] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:39:10] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:39:46] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470567,"usec":605336}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470567, "usec":605502}, "rx":{"sec":1670470567, "usec":830741}, "rtt":225.239, "probe_ipid":22279, "reply_ipid":45241, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470568, "usec":605887}, "rx":{"sec":1670470568, "usec":829457}, "rtt":223.570, "probe_ipid":8270, "reply_ipid":45587, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470569, "usec":606487}, "rx":{"sec":1670470569, "usec":831550}, "rtt":225.063, "probe_ipid":19188, "reply_ipid":46043, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":223.570, "max":225.239, "avg":224.624, "stddev":0.748}}']
+{'76.19.212.57': 224.624}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470603,"usec":226848}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470603, "usec":227251}, "rx":{"sec":1670470603, "usec":454795}, "rtt":227.544, "probe_ipid":4538, "reply_ipid":56318, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470604, "usec":227833}, "rx":{"sec":1670470604, "usec":454021}, "rtt":226.188, "probe_ipid":17674, "reply_ipid":56975, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470605, "usec":228071}, "rx":{"sec":1670470605, "usec":452594}, "rtt":224.523, "probe_ipid":51324, "reply_ipid":57319, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":224.523, "max":227.544, "avg":226.085, "stddev":1.235}}']
+{'76.19.212.57': 226.085}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470638,"usec":838110}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470638, "usec":838228}, "rx":{"sec":1670470639, "usec":61569}, "rtt":223.341, "probe_ipid":35607, "reply_ipid":6800, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470639, "usec":838626}, "rx":{"sec":1670470640, "usec":68626}, "rtt":230.000, "probe_ipid":30712, "reply_ipid":7675, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470640, "usec":839709}, "rx":{"sec":1670470641, "usec":62065}, "rtt":222.356, "probe_ipid":48917, "reply_ipid":7725, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":222.356, "max":230.000, "avg":225.232, "stddev":3.395}}']
+{'76.19.212.57': 225.232}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470674,"usec":462378}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470674, "usec":462514}, "rx":{"sec":1670470674, "usec":691963}, "rtt":229.449, "probe_ipid":30088, "reply_ipid":31287, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470675, "usec":463028}, "rx":{"sec":1670470675, "usec":686213}, "rtt":223.185, "probe_ipid":56071, "reply_ipid":31900, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470676, "usec":463210}, "rx":{"sec":1670470676, "usec":687470}, "rtt":224.260, "probe_ipid":36426, "reply_ipid":32416, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":223.185, "max":229.449, "avg":225.631, "stddev":2.734}}']
+{'76.19.212.57': 225.631}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470710,"usec":87503}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470710, "usec":87619}, "rx":{"sec":1670470710, "usec":312402}, "rtt":224.783, "probe_ipid":47683, "reply_ipid":55064, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470711, "usec":88436}, "rx":{"sec":1670470711, "usec":312747}, "rtt":224.311, "probe_ipid":49760, "reply_ipid":55402, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470712, "usec":89395}, "rx":{"sec":1670470712, "usec":311257}, "rtt":221.862, "probe_ipid":23537, "reply_ipid":55682, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":221.862, "max":224.783, "avg":223.652, "stddev":1.280}}']
+{'76.19.212.57': 223.652}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470745,"usec":716895}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "97.107.140.73 - - [07/Dec/2022 22:40:22] "POST /measure HTTP/1.1" 200 -
 usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
                [-M monitorname] [-l listname] [-L listid] [-C cycleid]
                [-o outfile] [-O options] [-F firewall] [-e pidfile]
@@ -6,315 +45,283 @@ usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
                 -U unix]
 
             -i list of IP addresses provided on the command line
-Exception in thread Thread-2 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 76, in measure
-    scamper_output = subprocess.check_output(
-  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
-    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
-  File "/usr/lib/python3.10/subprocess.py", line 524, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
-97.107.140.73 - - [07/Dec/2022 18:50:53] "POST /measure HTTP/1.1" 200 -
-usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
-               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
-               [-o outfile] [-O options] [-F firewall] [-e pidfile]
-               [-d debugfile]
-               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
-                -U unix]
-
-            -i list of IP addresses provided on the command line
-Exception in thread Thread-5 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 76, in measure
-    scamper_output = subprocess.check_output(
-  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
-    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
-  File "/usr/lib/python3.10/subprocess.py", line 524, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
-97.107.140.73 - - [07/Dec/2022 18:51:29] "POST /measure HTTP/1.1" 200 -
-usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
-               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
-               [-o outfile] [-O options] [-F firewall] [-e pidfile]
-               [-d debugfile]
-               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
-                -U unix]
-
-            -i list of IP addresses provided on the command line
-Exception in thread Thread-8 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 76, in measure
-    scamper_output = subprocess.check_output(
-  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
-    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
-  File "/usr/lib/python3.10/subprocess.py", line 524, in run
-    raise CalledProcessError(retcode, process.args,
-subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
-97.107.140.73 - - [07/Dec/2022 18:52:04] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-11 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:52:40] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-14 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:53:16] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-17 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:53:51] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-20 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:54:27] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-23 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:55:03] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-26 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:55:38] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-29 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:56:14] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-32 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:56:50] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-35 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:57:25] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-38 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:58:01] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-41 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:58:36] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-44 (measure):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
-    self.run()
-  File "/usr/lib/python3.10/threading.py", line 953, in run
-    self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
-    rtt = json_object["statistics"]["avg"]
-KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:59:12] "POST /measure HTTP/1.1" 200 -
 Exception in thread Thread-47 (measure):
 Traceback (most recent call last):
   File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
     self.run()
   File "/usr/lib/python3.10/threading.py", line 953, in run
     self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:40:34] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470674,"usec":595364}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470674, "usec":595465}, "rx":{"sec":1670470674, "usec":902262}, "rtt":306.797, "probe_ipid":64675, "reply_ipid":38362, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470675, "usec":596253}, "rx":{"sec":1670470675, "usec":905677}, "rtt":309.424, "probe_ipid":57372, "reply_ipid":38513, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470676, "usec":596645}, "rx":{"sec":1670470676, "usec":906981}, "rtt":310.336, "probe_ipid":33746, "reply_ipid":39071, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":3, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470677, "usec":597005}, "rx":{"sec":1670470677, "usec":908242}, "rtt":311.237, "probe_ipid":4752, "reply_ipid":39160, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":306.797, "max":311.237, "avg":309.448, "stddev":1.659}}']
+{'76.19.212.57': 309.448}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470710,"usec":220075}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470710, "usec":220223}, "rx":{"sec":1670470710, "usec":524717}, "rtt":304.494, "probe_ipid":12041, "reply_ipid":46514, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470711, "usec":220734}97.107.140.73 - - [07/Dec/2022 22:40:57] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-53 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 84, in measure
     rtt = json_object["statistics"]["avg"]
 KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 18:59:48] "POST /measure HTTP/1.1" 200 -
-Exception in thread Thread-50 (measure):
+76.19.212.57 - - [07/Dec/2022 22:41:10] "POST /measure HTTP/1.1" 200 -
+97.107.140.73 - - [07/Dec/2022 22:41:33] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-59 (measure):
 Traceback (most recent call last):
   File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
     self.run()
   File "/usr/lib/python3.10/threading.py", line 953, in run
     self._target(*self._args, **self._kwargs)
-  File "/home/r_r/http_server/./httpserver", line 83, in measure
+  File "/home/r_r/http_server/./httpserver", line 84, in measure
     rtt = json_object["statistics"]["avg"]
 KeyError: 'avg'
-97.107.140.73 - - [07/Dec/2022 19:00:23] "POST /measure HTTP/1.1" 200 -
-r/lib/python3.10/socket.py", line 833, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
+76.19.212.57 - - [07/Dec/2022 22:41:46] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470816,"usec":950206}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470816, "usec":950329}, "rx":{"sec":1670470817, "usec":171081}, "rtt":220.752, "probe_ipid":50488, "reply_ipid":56892, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470817, "usec":951132}, "rx":{"sec":1670470818, "usec":174033}, "rtt":222.901, "probe_ipid":44657, "reply_ipid":57263, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470818, "usec":951190}, "rx":{"sec":1670470819, "usec":173417}, "rtt":222.227, "probe_ipid":27166, "reply_ipid":57427, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":220.752, "max":222.901, "avg":221.960, "stddev":0.897}}']
+{'76.19.212.57': 221.96}
+{}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470852,"usec":578194}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470852, "usec":578335}, "rx":{"sec":1670470852, "usec":807335}, "rtt":229.000, "probe_ipid":3499, "reply_ipid":57761, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470853, "usec":578535}, "rx":{"sec":1670470853, "usec":805625}, "rtt":227.090, "probe_ipid":31764, "reply_ipid":58412, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470854, "usec":579131}, "rx":{"sec":1670470854, "usec":810752}, "rtt":231.621, "probe_ipid":42047, "reply_ipid":58620, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":227.090, "max":231.621, "avg":229.237, "stddev":1.857}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"35.175.146.183", "start":{"sec":1670470852,"usec":628634}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470852, "usec":628653}, "rx":{"sec":1670470852, "usec":861467}, "rtt":232.814, "probe_ipid":49438, "reply_ipid":7890, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470853, "usec":628723}, "rx":{"sec":1670470853, "usec":861119}, "rtt":232.396, "probe_ipid":61556, "reply_ipid":7964, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470854, "usec":629540}, "rx":{"sec":1670470854, "usec":862104}, "rtt":232.564, "probe_ipid":7579, "reply_ipid":8161, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470855, "usec":630421}, "rx":{"sec":1670470855, "usec":862808}, "rtt":232.387, "probe_ipid":25935, "reply_ipid":8321, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":232.387, "max":232.814, "avg":232.540, "stddev":0.173}}']
+{'76.19.212.57': 229.237, '35.175.146.183': 232.54}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"10.0.0.234", "start":{"sec":1670470865,"usec":539781}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[],"statistics":{"replies":0, "loss":1}}']
+{}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470888,"usec":202663}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470888, "usec":202827}, "rx":{"sec":1670470888, "usec":426534}, "rtt":223.707, "probe_ipid":32631, "reply_ipid":17285, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470889, "usec":203838}, "rx":{"sec":1670470889, "usec":431806}, "rtt":227.968, "probe_ipid":22312, "reply_ipid":18074, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470890, "usec":204576}, "rx":{"sec":1670470890, "usec":427966}, "rtt":223.390, "probe_ipid":62290, "reply_ipid":18246, "icmp_type":0, ['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470852,"usec":710187}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470852, "usec":710320}, "rx":{"sec":1670470853, "usec":23341}, "rtt":313.021, "probe_ipid":46118, "reply_ipid":32828, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470853, "usec":711082}, "rx":{"sec":1670470854, "usec":18823}, "rtt":307.741, "probe_ipid":45063, "reply_ipid":33084, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470854, "usec":712152}, "rx":{"sec":1670470855, "usec":27741}, "rtt":315.589, "probe_ipid":48790, "reply_ipid":33283, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":3, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470855, "usec":713213}, "rx":{"sec":1670470856, "usec":26335}, "rtt":313.122, "probe_ipid":57656, "reply_ipid":33435, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":307.741, "max":315.589, "avg":312.368, "stddev":2.862}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"35.175.146.183", "start":{"sec":1670470852,"usec":760596}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470852, "usec":760610}, "rx":{"sec":1670470853, "usec":48204}, "rtt":287.594, "probe_ipid":61819, "reply_ipid":7171, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470853, "usec":761462}, "rx":{"sec":1670470854, "usec":49116}, "rtt":287.654, "probe_ipid":41076, "reply_ipid":7321, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470854, "usec":762470}, "rx":{"sec":1670470855, "usec":50158}, "rtt":287.688, "probe_ipid":19953, "reply_ipid":7552, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470855, "usec":763542}, "rx":{"sec":1670470856, "usec":51178}, "rtt":287.636, "probe_ipid":42125, "reply_ipid":7780, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":287.594, "max":287.688, "avg":287.643, "stddev":0.033}}']
+{'76.19.212.57': 312.368, '35.175.146.183': 287.643}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"10.0.0.234", "start":{"sec":1670470865,"usec":661499}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[],"statistics":{"replies":0, "loss":1}}']
+{}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470888,"usec":334648}, "pin97.107.140.73 - - [07/Dec/2022 22:42:08] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-65 (measure):
 Traceback (most recent call last):
   File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
     self.run()
   File "/usr/lib/python3.10/threading.py", line 953, in run
     self._target(*self._args, **self._kwargs)
-  File "/home/r_r/dns_server/./dnsserver", line 106, in _request_measurement
-    res = request.urlopen(req, body_bytes)
-  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
-Exception in thread Thread-9 (_request_measurement):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.10/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.10/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.10/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.10/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.10/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.10/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
-    raise err
-  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/r_r/http_server/./httpserver", line 84, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+76.19.212.57 - - [07/Dec/2022 22:42:21] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470923,"usec":827402}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470923, "usec":827518}, "rx":{"sec":1670470924, "usec":55697}, "rtt":228.179, "probe_ipid":27913, "reply_ipid":26845, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470924, "usec":828102}, "rx":{"sec":1670470925, "usec":55656}, "rtt":227.554, "probe_ipid":10461, "reply_ipid":27257, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470925, "usec":828903}, "rx":{"sec":1670470926, "usec":52284}, "rtt":223.381, "probe_ipid":47254, "reply_ipid":28137, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":223.381, "max":228.179, "avg":226.371, "stddev":2.129}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"52.53.228.21", "start":{"sec":1670470923,"usec":877819}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"52.53.228.21", "seq":0, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470923, "usec":877845}, "rx":{"sec":1670470924, "usec":51914}, "rtt":174.069, "probe_ipid":45589, "reply_ipid":49375, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":1, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470924, "usec":878383}, "rx":{"sec":1670470925, "usec":52126}, "rtt":173.743, "probe_ipid":17035, "reply_ipid":49531, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":2, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470925, "usec":879254}, "rx":{"sec":1670470926, "usec":53012}, "rtt":173.758, "probe_ipid":9857, "reply_ipid":49621, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":3, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470926, "usec":879342}, "rx":{"sec":1670470927, "usec":53016}, "rtt":173.674, "probe_ipid":28861, "reply_ipid":49791, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":173.674, "max":174.069, "avg":173.811, "stddev":0.152}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"35.175.146.183", "start":{"sec":1670470923,"usec":928128}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470923, "usec":928145}, "rx":{"sec":1670470924, "usec":161208}, "rtt":233.063, "probe_ipid":35256, "reply_ipid":17340, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470924, "usec":928632}, "rx":{"sec":1670470925, "usec":160948}, "rtt":232.316, "probe_ipid":55801, "reply_ipid":17450, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470925, "usec":929656}, "rx":{"sec":1670470926, "usec":162196}, "rtt":232.540, "probe_ipid":49401, "reply_ipid":17490, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470926, "usec":930615}, "rx":{"sec":1670470927, "usec":163014}, "rtt":232.399, "probe_ipid":63134, "reply_ipid":17556, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":232.316, "max":233.063, "avg":232.579, "stddev":0.290}}']
+{'76.19.212.57': 226.371, '52.53.228.21': 173.811, '35.175.146.183': 232.579}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"10.0.0.234", "start":{"sec":1670470936,"usec":850246}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[],"statistics":{"replies":0, "loss":1}}']
+{}
+97.107.140.73 - - [07/Dec/2022 22:42:44] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-71 (measure):
 Traceback (most recent call last):
   File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
     self.run()
   File "/usr/lib/python3.10/threading.py", line 953, in run
     self._target(*self._args, **self._kwargs)
-  File "/home/r_r/dns_server/./dnsserver", line 106, in _request_measurement
-    res = request.urlopen(req, body_bytes)
-  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
-Exception in thread Thread-8 (_request_measurement):
-Traceback (most recent call last):
-  File "/usr/lib/python3.10/urllib/request.py", line 1348, in do_open
-    h.request(req.get_method(), req.selector, req.data, headers,
-  File "/usr/lib/python3.10/http/client.py", line 1282, in request
-    self._send_request(method, url, body, headers, encode_chunked)
-  File "/usr/lib/python3.10/http/client.py", line 1328, in _send_request
-    self.endheaders(body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.10/http/client.py", line 1277, in endheaders
-    self._send_output(message_body, encode_chunked=encode_chunked)
-  File "/usr/lib/python3.10/http/client.py", line 1037, in _send_output
-    self.send(msg)
-  File "/usr/lib/python3.10/http/client.py", line 975, in send
-    self.connect()
-  File "/usr/lib/python3.10/http/client.py", line 941, in connect
-    self.sock = self._create_connection(
-  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
-    raise err
-  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
-    sock.connect(sa)
-ConnectionRefusedError: [Errno 111] Connection refused
-
-During handling of the above exception, another exception occurred:
-
+  File "/home/r_r/http_server/./httpserver", line 84, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+76.19.212.57 - - [07/Dec/2022 22:42:57] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470959,"usec":422354}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470959, "usec":422489}, "rx":{"sec":1670470959, "usec":648654}, "rtt":226.165, "probe_ipid":16296, "reply_ipid":50260, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470960, "usec":422617}, "rx":{"sec":1670470960, "usec":644447}, "rtt":221.830, "probe_ipid":20061, "reply_ipid":50909, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470961, "usec":423694}, "rx":{"sec":1670470961, "usec":654234}, "rtt":230.540, "probe_ipid":17629, "reply_ipid":51798, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":221.830, "max":230.540, "avg":226.178, "stddev":3.555}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"52.53.228.21", "start":{"sec":1670470959,"usec":472787}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"52.53.228.21", "seq":0, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470959, "usec":472807}, "rx":{"sec":1670470959, "usec":646548}, "rtt":173.741, "probe_ipid":31265, "reply_ipid":53624, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":1, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470960, "usec":472925}, "rx":{"sec":1670470960, "usec":646622}, "rtt":173.697, "probe_ipid":63191, "reply_ipid":53657, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":2, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470961, "usec":474013}, "rx":{"sec":1670470961, "usec":647653}, "rtt":173.640, "probe_ipid":27154, "reply_ipid":53820, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":3, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670470962, "usec":474045}, "rx":{"sec":1670470962, "usec":647737}, "rtt":173.692, "probe_ipid":56207, "reply_ipid":53898, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":173.640, "max":173.741, "avg":173.692, "stddev":0.035}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"35.175.146.183", "start":{"sec":1670470959,"usec":523083}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470959, "usec":523102}, "rx":{"sec":1670470959, "usec":755459}, "rtt":232.357, "probe_ipid":65412, "reply_ipid":20355, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470960, "usec":523146}, "rx":{"sec":1670470960, "usec":755495}, "rtt":232.349, "probe_ipid":51735, "reply_ipid":20457, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470961, "usec":524291}, "rx":{"sec":1670470961, "usec":756612}, "rtt":232.321, "probe_ipid":54046, "reply_ipid":20579, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470962, "usec":525366}, "rx":{"sec":1670470962, "usec":757674}, "rtt":232.308, "probe_ipid":23863, "reply_ipid":20680, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":232.308, "max":232.357, "avg":232.333, "stddev":0.019}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"18.192.115.31", "start":{"sec":1670470959,"usec":572414}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.192.115.31", "seq":0, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670470959, "usec":572434}, "rx":{"sec":1670470959, "usec":822733}, "rtt":250.299, "probe_ipid":15737, "reply_ipid":27442, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":1, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670470960, "usec":573476}, "rx":{"sec":1670470960, "usec":823698}, "rtt":250.222, "probe_ipid":44096, "repl['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470959,"usec":554582}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470959, "usec":554708}, "rx":{"sec":1670470959, "usec":861043}, "rtt":306.335, "probe_ipid":61847, "reply_ipid":30599, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470960, "usec":555083}, "rx":{"sec":1670470960, "usec":866647}, "rtt":311.564, "probe_ipid":58345, "reply_ipid":30879, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470961, "usec":555315}, "rx":{"sec":1670470961, "usec":861624}, "rtt":306.309, "probe_ipid":25074, "reply_ipid":31514, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":3, "reply_si97.107.140.73 - - [07/Dec/2022 22:43:20] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-77 (measure):
 Traceback (most recent call last):
   File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
     self.run()
   File "/usr/lib/python3.10/threading.py", line 953, in run
     self._target(*self._args, **self._kwargs)
-  File "/home/r_r/dns_server/./dnsserver", line 106, in _request_measurement
-    res = request.urlopen(req, body_bytes)
-  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
-    return opener.open(url, data, timeout)
-  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
-    response = self._open(req, data)
-  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
-    result = self._call_chain(self.handle_open, protocol, protocol +
-  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
-    result = func(*args)
-  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
-    return self.do_open(http.client.HTTPConnection, req)
-  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
-    raise URLError(err)
-urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+  File "/home/r_r/http_server/./httpserver", line 84, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+76.19.212.57 - - [07/Dec/2022 22:43:33] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670470995,"usec":48096}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470995, "usec":48352}, "rx":{"sec":1670470995, "usec":275750}, "rtt":227.398, "probe_ipid":37568, "reply_ipid":4089, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470996, "usec":49224}, "rx":{"sec":1670470996, "usec":276477}, "rtt":227.253, "probe_ipid":47700, "reply_ipid":4971, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670470997, "usec":50165}, "rx":{"sec":1670470997, "usec":279626}, "rtt":229.461, "probe_ipid":54415, "reply_ipid":5250, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":227.253, "max":229.461, "avg":228.037, "stddev":1.008}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"18.192.115.31", "start":{"sec":1670470995,"usec":98652}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.192.115.31", "seq":0, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670470995, "usec":98670}, "rx":{"sec":1670470995, "usec":348419}, "rtt":249.749, "probe_ipid":29710, "reply_ipid":31041, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":1, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670470996, "usec":99548}, "rx":{"sec":1670470996, "usec":349322}, "rtt":249.774, "probe_ipid":40290, "reply_ipid":31068, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":2, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670470997, "usec":100493}, "rx":{"sec":1670470997, "usec":350353}, "rtt":249.860, "probe_ipid":11122, "reply_ipid":31069, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":3, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670470998, "usec":101501}, "rx":{"sec":1670470998, "usec":351324}, "rtt":249.823, "probe_ipid":7772, "reply_ipid":31240, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":249.749, "max":249.860, "avg":249.801, "stddev":0.043}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"35.175.146.183", "start":{"sec":1670470995,"usec":147915}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470995, "usec":147934}, "rx":{"sec":1670470995, "usec":378994}, "rtt":231.060, "probe_ipid":12805, "reply_ipid":22182, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470996, "usec":149884}, "rx":{"sec":1670470996, "usec":381115}, "rtt":231.231, "probe_ipid":35937, "reply_ipid":22294, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470997, "usec":150796}, "rx":{"sec":1670470997, "usec":382087}, "rtt":231.291, "probe_ipid":23855, "reply_ipid":22378, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670470998, "usec":151816}, "rx":{"sec":1670470998, "usec":382906}, "rtt":231.090, "probe_ipid":48431, "reply_ipid":22526, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":231.060, "max":231.291, "avg":231.168, "stddev":0.095}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"18.134.159.46", "start":{"sec":1670470995,"usec":198221}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.134.159.46", "seq":0, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670470995, "usec":198238}, "rx":{"sec":1670470995, "usec":451298}, "rtt":253.060, "probe_ipid":15220, "reply_ipid":39101, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":1, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670470996, "usec":200199}, "rx":{"sec":1670470996, "usec":453268}, "rtt":253.069, "probe_ipid":21789, "reply_ipid":39224, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":2, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670470997, "usec":201071}, "rx":{"sec":1670470997, "usec":454266}, "rtt":253.195, "probe_ipid":33076, "reply_ip['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670470995,"usec":179333}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470995, "usec":179469}, "rx":{"sec":1670470995, "usec":490548}, "rtt":311.079, "probe_ipid":10308, "reply_ipid":63850, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470996, "usec":179515}, "rx":{"sec":1670470996, "usec":486029}, "rtt":306.514, "probe_ipid":61868, "reply_ipid":64549, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470997, "usec":180393}, "rx":{"sec":1670470997, "usec":494540}, "rtt":314.147, "probe_ipid":28049, "reply_ipid":65421, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":3, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670470998, "usec":180525}, "rx":{"sec":1670470998, "usec":484039}, "rtt":303.514, "probe_ipid":3342, "reply_ipid":574, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":303.514, "max":314.147, "avg":308.813, "stddev":4.091}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"18.192.115.31", "start":{"sec":1670470995,"usec":229837}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.192.115.31", "seq":0, "reply_size":84, "reply_ttl":46, "reply_proto":"icmp", "tx":{"sec":1670470995, "usec":229855}, "rx":{"sec":1670470995, "usec":363197}, "rtt":133.342, "probe_ipid":55847, "reply_ipid":17321, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":1, "reply_size":84, "reply_ttl":46, "reply_proto":"icmp", "tx":{"sec":1670470996, "usec":230863}, "rx":{"sec":1670470996, "usec":364224}, "rtt":133.361, "probe_ipid":39806, "reply_ipid":17365, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":2, "reply_size":84, "reply_ttl"97.107.140.73 - - [07/Dec/2022 22:43:55] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-83 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:16] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-86 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:23] "POST /measure HTTP/1.1" 200 -
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"76.19.212.57", "start":{"sec":1670471030,"usec":653621}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471030, "usec":653780}, "rx":{"sec":1670471030, "usec":876468}, "rtt":222.688, "probe_ipid":58781, "reply_ipid":27271, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":654134}, "rx":{"sec":1670471031, "usec":879176}, "rtt":225.042, "probe_ipid":58900, "reply_ipid":27601, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":654500}, "rx":{"sec":1670471032, "usec":875738}, "rtt":221.238, "probe_ipid":42975, "reply_ipid":27838, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":3, "loss":0.25, "min":221.238, "max":225.042, "avg":222.989, "stddev":1.567}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"43.206.138.184", "start":{"sec":1670471030,"usec":704068}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"43.206.138.184", "seq":0, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471030, "usec":704086}, "rx":{"sec":1670471030, "usec":835721}, "rtt":131.635, "probe_ipid":42489, "reply_ipid":4293, "icmp_type":0, "icmp_code":0},{"from":"43.206.138.184", "seq":1, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":704380}, "rx":{"sec":1670471031, "usec":835949}, "rtt":131.569, "probe_ipid":62643, "reply_ipid":4515, "icmp_type":0, "icmp_code":0},{"from":"43.206.138.184", "seq":2, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":704756}, "rx":{"sec":1670471032, "usec":836445}, "rtt":131.689, "probe_ipid":63718, "reply_ipid":4657, "icmp_type":0, "icmp_code":0},{"from":"43.206.138.184", "seq":3, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471033, "usec":705185}, "rx":{"sec":1670471033, "usec":837055}, "rtt":131.870, "probe_ipid":2474, "reply_ipid":4677, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":131.569, "max":131.870, "avg":131.690, "stddev":0.111}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"18.192.115.31", "start":{"sec":1670471030,"usec":754307}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.192.115.31", "seq":0, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670471030, "usec":754326}, "rx":{"sec":1670471031, "usec":4167}, "rtt":249.841, "probe_ipid":37865, "reply_ipid":33429, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":1, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":754674}, "rx":{"sec":1670471032, "usec":4515}, "rtt":249.841, "probe_ipid":24671, "reply_ipid":33568, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":2, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":755044}, "rx":{"sec":1670471033, "usec":4865}, "rtt":249.821, "probe_ipid":3453, "reply_ipid":33573, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":3, "reply_size":84, "reply_ttl":38, "reply_proto":"icmp", "tx":{"sec":1670471033, "usec":755536}, "rx":{"sec":1670471034, "usec":5353}, "rtt":249.817, "probe_ipid":50518, "reply_ipid":33593, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":249.817, "max":249.841, "avg":249.830, "stddev":0.011}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"35.175.146.183", "start":{"sec":1670471030,"usec":803644}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471030, "usec":803662}, "rx":{"sec":1670471031, "usec":34863}, "rtt":231.201, "probe_ipid":43208, "reply_ipid":27683, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":805105}, "rx":{"sec":1670471032, "usec":36183}, "rtt":231.078, "probe_ipid":29133, "reply_ipid":27732, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":805305}, "rx":{"sec":1670471033, "usec":36803}, "rtt":231.498, "probe_ipid":51985, "reply_ipid":27750, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471033, "usec":806117}, "rx":{"sec":1670471034, "usec":37420}, "rtt":231.303, "probe_ipid":6182, "reply_ipid":27903, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":231.078, "max":231.498, "avg":231.270, "stddev":0.153}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"18.134.159.46", "start":{"sec":1670471030,"usec":854116}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.134.159.46", "seq":0, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670471030, "usec":854132}, "rx":{"sec":1670471031, "usec":107303}, "rtt":253.171, "probe_ipid":53212, "reply_ipid":44461, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":1, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":854521}, "rx":{"sec":1670471032, "usec":107704}, "rtt":253.183, "probe_ipid":53603, "reply_ipid":44565, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":2, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":854808}, "rx":{"sec":1670471033, "usec":107910}, "rtt":253.102, "probe_ipid":11365, "reply_ipid":44736, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":3, "reply_size":84, "reply_ttl":25, "reply_proto":"icmp", "tx":{"sec":1670471033, "usec":855523}, "rx":{"sec":1670471034, "usec":108728}, "rtt":253.205, "probe_ipid":23113, "reply_ipid":44884, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":253.102, "max":253.205, "avg":253.165, "stddev":0.038}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"170.187.240.5", "dst":"52.53.228.21", "start":{"sec":1670471030,"usec":904002}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"52.53.228.21", "seq":0, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471030, "usec":904076}, "rx":{"sec":1670471031, "usec":77826}, "rtt":173.750, "probe_ipid":60199, "reply_ipid":65400, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":1, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":904596}, "rx":{"sec":1670471032, "usec":78335}, "rtt":173.739, "probe_ipid":59141, "reply_ipid":65477, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":2, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":905127}, "rx":{"sec":1670471033, "usec":78809}, "rtt":173.682, "probe_ipid":35368, "reply_ipid":65510, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":3, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471033, "usec":905827}, "rx":{"sec":1670471034, "usec":79692}, "rtt":173.865, "probe_ipid":26172, "reply_ipid":119, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":173.682, "max":173.865, "avg":173.759, "stddev":0.066}}']
+{'76.19.212.57': 222.989, '43.206.138.184': 131.69, '18.192.115.31': 249.83, '35.175.146.183': 231.27, '18.134.159.46': 253.165, '52.53.228.21': 173.759}
+{}
+{}
+97.107.140.73 - - [07/Dec/2022 22:44:31] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-92 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:47] "POST /measure HTTP/1.1" 200 -
+n":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"52.53.228.21", "start":{"sec":1670471031,"usec":36140}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"52.53.228.21", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471031, "usec":36156}, "rx":{"sec":1670471031, "usec":272986}, "rtt":236.830, "probe_ipid":7244, "reply_ipid":20140, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471032, "usec":37294}, "rx":{"sec":1670471032, "usec":274368}, "rtt":237.074, "probe_ipid":57321, "reply_ipid":20284, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471033, "usec":37658}, "rx":{"sec":1670471033, "usec":274592}, "rtt":236.934, "probe_ipid":41928, "reply_ipid":20364, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471034, "usec":38714}, "rx":{"sec":1670471034, "usec":275583}, "rtt":236.869, "probe_ipid":24392, "reply_ipid":20435, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":236.830, "max":237.074, "avg":236.926, "stddev":0.092}}']
+97.107.140.73 - - [07/Dec/2022 22:43:55] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-83 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:16] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-86 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:23] "POST /measure HTTP/1.1" 200 -
+{'76.19.212.57': 305.843, '43.206.138.184': 132.328, '18.192.115.31': 133.39, '35.175.146.183': 287.656, '18.134.159.46': 128.044, '52.53.228.21': 236.926}
+{}
+{}
+['{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"76.19.212.57", "start":{"sec":1670471066,"usec":381798}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"76.19.212.57", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":381930}, "rx":{"sec":1670471066, "usec":688968}, "rtt":307.038, "probe_ipid":44016, "reply_ipid":33162, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":382052}, "rx":{"sec":1670471067, "usec":693557}, "rtt":311.505, "probe_ipid":49928, "reply_ipid":33536, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":382210}, "rx":{"sec":1670471068, "usec":687863}, "rtt":305.653, "probe_ipid":33677, "reply_ipid":34187, "icmp_type":0, "icmp_code":0},{"from":"76.19.212.57", "seq":3, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":383303}, "rx":{"sec":1670471069, "usec":690119}, "rtt":306.816, "probe_ipid":12272, "reply_ipid":34373, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":305.653, "max":311.505, "avg":307.753, "stddev":2.229}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"43.206.138.184", "start":{"sec":1670471066,"usec":432300}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"43.206.138.184", "seq":0, "reply_size":84, "reply_ttl":42, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":432317}, "rx":{"sec":1670471066, "usec":564600}, "rtt":132.283, "probe_ipid":65531, "reply_ipid":42185, "icmp_type":0, "icmp_code":0},{"from":"43.206.138.184", "seq":1, "reply_size":84, "reply_ttl":42, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":433375}, "rx":{"sec":1670471067, "usec":565783}, "rtt":132.408, "probe_ipid":40243, "reply_ipid":42409, "icmp_type":0, "icmp_code":0},{"from":"43.206.138.184", "seq":2, "reply_size":84, "reply_ttl":42, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":433520}, "rx":{"sec":1670471068, "usec":565794}, "rtt":132.274, "probe_ipid":2015, "reply_ipid":42563, "icmp_type":0, "icmp_code":0},{"from":"43.206.138.184", "seq":3, "reply_size":84, "reply_ttl":42, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":433590}, "rx":{"sec":1670471069, "usec":565872}, "rtt":132.282, "probe_ipid":31913, "reply_ipid":42567, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":132.274, "max":132.408, "avg":132.311, "stddev":0.055}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"18.192.115.31", "start":{"sec":1670471066,"usec":481611}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.192.115.31", "seq":0, "reply_size":84, "reply_ttl":46, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":481631}, "rx":{"sec":1670471066, "usec":614992}, "rtt":133.361, "probe_ipid":1439, "reply_ipid":25053, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":1, "reply_size":84, "reply_ttl":46, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":482694}, "rx":{"sec":1670471067, "usec":616038}, "rtt":133.344, "probe_ipid":25257, "reply_ipid":25247, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":2, "reply_size":84, "reply_ttl":46, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":482770}, "rx":{"sec":1670471068, "usec":616138}, "rtt":133.368, "probe_ipid":508, "reply_ipid":25451, "icmp_type":0, "icmp_code":0},{"from":"18.192.115.31", "seq":3, "reply_size":84, "reply_ttl":46, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":483932}, "rx":{"sec":1670471069, "usec":617329}, "rtt":133.397, "probe_ipid":59359, "reply_ipid":25615, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":133.344, "max":133.397, "avg":133.367, "stddev":0.019}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"35.175.146.183", "start":{"sec":1670471066,"usec":531996}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"35.175.146.183", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":532015}, "rx":{"sec":1670471066, "usec":819649}, "rtt":287.634, "probe_ipid":6658, "reply_ipid":35741, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":533022}, "rx":{"sec":1670471067, "usec":820694}, "rtt":287.672, "probe_ipid":17713, "reply_ipid":35978, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":534099}, "rx":{"sec":1670471068, "usec":821783}, "rtt":287.684, "probe_ipid":18610, "reply_ipid":35987, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":534211}, "rx":{"sec":1670471069, "usec":821857}, "rtt":287.646, "probe_ipid":32214, "reply_ipid":36140, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":287.634, "max":287.684, "avg":287.659, "stddev":0.019}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"18.134.159.46", "start":{"sec":1670471066,"usec":582055}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.134.159.46", "seq":0, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":582074}, "rx":{"sec":1670471066, "usec":710170}, "rtt":128.096, "probe_ipid":30192, "reply_ipid":33707, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":1, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":583109}, "rx":{"sec":1670471067, "usec":711064}, "rtt":127.955, "probe_ipid":58833, "reply_ipid":33763, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":2, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":584161}, "rx":{"sec":1670471068, "usec":712176}, "rtt":128.015, "probe_ipid":25993, "reply_ipid":33769, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":3, "reply_size":84, "reply_ttl":45, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":584223}, "rx":{"sec":1670471069, "usec":712176}, "rtt":127.953, "probe_ipid":59000, "reply_ipid":33890, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":127.953, "max":128.096, "avg":128.004, "stddev":0.058}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"192.46.211.228", "dst":"52.53.228.21", "start":{"sec":1670471066,"usec":632454}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"52.53.228.21", "seq":0, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":632471}, "rx":{"sec":1670471066, "usec":869275}, "rtt":236.804, "probe_ipid":55982, "reply_ipid":26082, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":1, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":633381}, "rx":{"sec":1670471067, "usec":870393}, "rtt":237.012, "probe_ipid":15310, "reply_ipid":26216, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":2, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":633455}, "rx":{"sec":1670471068, "usec":870390}, "rtt":236.935, "probe_ipid":60990, "reply_ipid":26390, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":3, "reply_size":84, "reply_ttl":41, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":633731}, "rx":{"sec":1670471069, "usec":870577}, "rtt":236.846, "probe_ipid":28401, "reply_ipid":26478, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":236.804, "max":237.012, "avg":236.899, "stddev":0.080}}']
+97.107.140.73 - - [07/Dec/2022 22:44:31] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-92 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:47] "POST /measure HTTP/1.1" 200 -
+              [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command linusage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-99 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subproces776.19.212.57 - - [07/Dec/2022 22:44:47] "POST /measure HTTP/1.1" 200 -
+ check_output
+    return run(*popenargs, stdout=PIPE, timeout76.19.212.57 - - [07/Dec/2022 22:44:47] "POST /measure HTTP/1.1" 200 -
+524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:47] "POST /measure HTTP/1.1" 200 -
+ze":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":128330}, "rx":{"sec":1670471066, "usec":144841}, "rtt":16.511, "probe_ipid":60398, "reply_ipid":63859, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":1, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":129252}, "rx":{"sec":1670471067, "usec":146813}, "rtt":17.561, "probe_ipid":3783, "reply_ipid":64029, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":2, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":129875}, "rx":{"sec":1670471068, "usec":146444}, "rtt":16.569, "probe_ipid":12248, "reply_ipid":64123, "icmp_type":0, "icmp_code":0},{"from":"35.175.146.183", "seq":3, "reply_size":84, "reply_ttl":44, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":129930}, "rx":{"sec":1670471069, "usec":146638}, "rtt":16.708, "probe_ipid":17418, "reply_ipid":64269, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":16.511, "max":17.561, "avg":16.837, "stddev":0.423}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"139.144.30.25", "dst":"18.134.159.46", "start":{"sec":1670471066,"usec":179032}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"18.134.159.46", "seq":0, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":179050}, "rx":{"sec":1670471066, "usec":269974}, "rtt":90.924, "probe_ipid":9211, "reply_ipid":11115, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":1, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":179746}, "rx":{"sec":1670471067, "usec":272275}, "rtt":92.529, "probe_ipid":63972, "reply_ipid":11312, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":2, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":180512}, "rx":{"sec":1670471068, "usec":273660}, "rtt":93.148, "probe_ipid":60947, "reply_ipid":11519, "icmp_type":0, "icmp_code":0},{"from":"18.134.159.46", "seq":3, "reply_size":84, "reply_ttl":33, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":181067}, "rx":{"sec":1670471069, "usec":272090}, "rtt":91.023, "probe_ipid":63874, "reply_ipid":11577, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":90.924, "max":93.148, "avg":91.906, "stddev":0.958}}', '{"type":"ping", "version":"0.4", "method":"icmp-echo", "src":"139.144.30.25", "dst":"52.53.228.21", "start":{"sec":1670471066,"usec":228693}, "ping_sent":4, "probe_size":84, "userid":0, "ttl":64, "wait":1, "timeout":1, "responses":[{"from":"52.53.228.21", "seq":0, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471066, "usec":228709}, "rx":{"sec":1670471066, "usec":283473}, "rtt":54.764, "probe_ipid":6854, "reply_ipid":51678, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":1, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471067, "usec":229836}, "rx":{"sec":1670471067, "usec":285019}, "rtt":55.183, "probe_ipid":16555, "reply_ipid":51809, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":2, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471068, "usec":229915}, "rx":{"sec":1670471068, "usec":284597}, "rtt":54.682, "probe_ipid":1741, "reply_ipid":51917, "icmp_type":0, "icmp_code":0},{"from":"52.53.228.21", "seq":3, "reply_size":84, "reply_ttl":43, "reply_proto":"icmp", "tx":{"sec":1670471069, "usec":229945}, "rx":{"sec":1670471069, "usec":284827}, "rtt":54.882, "probe_ipid":7578, "reply_ipid":52156, "icmp_type":0, "icmp_code":0}],"statistics":{"replies":4, "loss":0, "min":54.682, "max":55.183, "avg":54.877, "stddev":0.190}}']
+97.107.140.73 - - [07/Dec/2022 22:44:30] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-120 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+76.19.212.57 - - [07/Dec/2022 22:44:46] "POST /measure HTTP/1.1" 200 -

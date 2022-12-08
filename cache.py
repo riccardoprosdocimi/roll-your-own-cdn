@@ -79,6 +79,8 @@ class RepliCache:
         if article[0] == "/":
             article = article[1:]
 
+        article = quote(article)
+
         if article not in self.articles:
             return False, None
 

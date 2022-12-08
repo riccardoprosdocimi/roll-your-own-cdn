@@ -24,7 +24,7 @@ done
 
 # shut down and clean up DNS server
 echo "Shutting down the DNS server..."
-ssh -i $keyfile $username@$DNS_SERVER "pkill -u $USERNAME python3; rm -rf ~/$DNS_DIR" &
+ssh -i $keyfile $username@$DNS_SERVER "pkill -u $USERNAME python3; rm -rf ~/$DNS_DIR"
 echo "DNS server has stopped"
 echo "DNS server cleanup complete"
 
@@ -35,5 +35,6 @@ do
 	echo "Shutting down replica: $username@$replica..."
 	ssh -i $keyfile $username@$replica "pkill -u $USERNAME python3; rm -rf ~/$HTTP_DIR" &
 done
+wait
 echo "Replicas have stopped"
 echo "Replicas cleanup complete"

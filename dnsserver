@@ -62,15 +62,17 @@ class DNSProxy:
         print('\nDNS server stopped.')
 
     def _get_all_measurements(self) -> None:
-        '''
+        """
         - Keep a queue/list of measurements.
         - Spin a thread to request measurements for each thread from each replicate endpoint.
         - As long as the measurement queue has data, set the best client to replica map.
-        '''
+        :return:
+        """
+
         while True:
-            # if len(self.resolver.CLIENT_IPS) == 0:
-            #     time.sleep(3)
-            #     continue
+            if len(self.resolver.CLIENT_IPS) == 0:
+                time.sleep(3)
+                continue
             measurement_queue = list()
             measurement_thread_queue = list()
             lock = threading.Lock()
@@ -78,23 +80,32 @@ class DNSProxy:
                 measurement_thread = threading.Thread(
                     target=self._request_measurement, args=(replica_ip, measurement_queue, lock))
                 measurement_thread_queue.append(measurement_thread)
-                measurement_thread.start()
+                try:
+                    measurement_thread.start()
+                except ConnectionRefusedError:
+                    continue
             # join threads
             for thread in measurement_thread_queue:
                 thread.join()
 
-            # calculate best client to replica
+            # calculate the best client to replica
             if len(measurement_queue) > 0:
                 self._set_best_replicas(measurement_queue)
             time.sleep(30)
 
     def _request_measurement(self, replica_ip: str, measurement_queue: list, lock: threading.Lock) -> json:
-        '''
+        """
         Make a get request for a replica to get measurements, and add the measurement for this replica
         to the list of all measurements.
         Param replica: a replica tuple containing the name and ip of the replica.
         measurement_queue: a list of all replica measurements. The measurements for this replica will be added to list.
-        '''
+
+        :param replica_ip:
+        :param measurement_queue:
+        :param lock:
+        :return:
+        """
+
         # format request to send
         req = request.Request(
             'http://' + replica_ip + ':' + str(self.port) + '/measure')
@@ -112,8 +123,9 @@ class DNSProxy:
         with lock:
             measurement_queue.append(json_data)
 
-    def _set_best_replicas(self, replica_measurements: list) -> None:
-        '''
+    @staticmethod
+    def _set_best_replicas(replica_measurements: list) -> None:
+        """
         Sets the client to replica map in state.
         Logic:
         - Iterate over each replica measurement.
@@ -122,7 +134,10 @@ class DNSProxy:
         - Get the rtt for that replica client.
         _ If the rtt is less than the previous replica rtt,
             set that replica as the value in the client replica map.
-        '''
+
+        :param replica_measurements:
+        :return:
+        """
 
         client_replica_map = {}
         for replica in replica_measurements:
