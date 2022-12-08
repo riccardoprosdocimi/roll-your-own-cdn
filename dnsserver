@@ -29,7 +29,7 @@ class Resolver:
             Resolver.CLIENT_IPS.add(client)
             response = request.reply()
             if client in Resolver.CLIENT_REPLICA_MAP.keys():
-                replica_ip = Resolver.CLIENT_REPLICA_MAP[client]
+                replica_ip = Resolver.CLIENT_REPLICA_MAP[client]['replica']
             else:
                 replica_ip = find_best_replica(client)
             replica_domain_name = REPLICAS[replica_ip]
@@ -151,7 +151,8 @@ class DNSProxy:
                     client_key, best_replica)
                 if int(replica['rtts'][client_key]) < int(client_replica['rtt']):
                     client_replica_map[client_key] = best_replica
-            Resolver.CLIENT_REPLICA_MAP = client_replica_map
+
+        Resolver.CLIENT_REPLICA_MAP = client_replica_map
 
 
 def parse_args():
