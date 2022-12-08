@@ -5,10 +5,8 @@ import threading
 import time
 from dataclasses import dataclass
 from urllib import request
-
 from dnslib.dns import RR
 from dnslib.server import DNSServer, DNSLogger, DNSError
-
 from geo import find_best_replica
 from replicas import REPLICAS
 from utils import get_local_ip

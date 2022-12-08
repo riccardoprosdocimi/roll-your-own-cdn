@@ -1,10 +1,320 @@
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-2 (measure):
 Traceback (most recent call last):
-  File "/home/r_r/dns_server/dnsserver", line 4, in <module>
-    from geo import find_best_replica
-  File "/home/r_r/dns_server/geo.py", line 5, in <module>
-    DB = maxminddb.open_database('GeoLite2-City.mmdb')
-  File "/home/r_r/dns_server/vendor/maxminddb/__init__.py", line 69, in open_database
-    return Reader(database, mode)
-  File "/home/r_r/dns_server/vendor/maxminddb/reader.py", line 57, in __init__
-    with open(database, "rb") as db_file:  # type: ignore
-FileNotFoundError: [Errno 2] No such file or directory: 'GeoLite2-City.mmdb'
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+97.107.140.73 - - [07/Dec/2022 18:50:53] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-5 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+97.107.140.73 - - [07/Dec/2022 18:51:29] "POST /measure HTTP/1.1" 200 -
+usage: scamper [-?Dv] [-c command] [-p pps] [-w window]
+               [-M monitorname] [-l listname] [-L listid] [-C cycleid]
+               [-o outfile] [-O options] [-F firewall] [-e pidfile]
+               [-d debugfile]
+               [-i IPs | -I cmds | -f file | -P [ip:]port | -R name:port |
+                -U unix]
+
+            -i list of IP addresses provided on the command line
+Exception in thread Thread-8 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 76, in measure
+    scamper_output = subprocess.check_output(
+  File "/usr/lib/python3.10/subprocess.py", line 420, in check_output
+    return run(*popenargs, stdout=PIPE, timeout=timeout, check=True,
+  File "/usr/lib/python3.10/subprocess.py", line 524, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['scamper', '-c', 'ping', '-i', '-O', 'json']' returned non-zero exit status 255.
+97.107.140.73 - - [07/Dec/2022 18:52:04] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-11 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:52:40] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-14 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:53:16] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-17 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:53:51] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-20 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:54:27] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-23 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:55:03] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-26 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:55:38] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-29 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:56:14] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-32 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:56:50] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-35 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:57:25] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-38 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:58:01] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-41 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:58:36] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-44 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:59:12] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-47 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 18:59:48] "POST /measure HTTP/1.1" 200 -
+Exception in thread Thread-50 (measure):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/http_server/./httpserver", line 83, in measure
+    rtt = json_object["statistics"]["avg"]
+KeyError: 'avg'
+97.107.140.73 - - [07/Dec/2022 19:00:23] "POST /measure HTTP/1.1" 200 -
+r/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/dns_server/./dnsserver", line 106, in _request_measurement
+    res = request.urlopen(req, body_bytes)
+  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+Exception in thread Thread-9 (_request_measurement):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.10/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/dns_server/./dnsserver", line 106, in _request_measurement
+    res = request.urlopen(req, body_bytes)
+  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
+Exception in thread Thread-8 (_request_measurement):
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/urllib/request.py", line 1348, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/usr/lib/python3.10/http/client.py", line 1282, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1328, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1277, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1037, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.10/http/client.py", line 975, in send
+    self.connect()
+  File "/usr/lib/python3.10/http/client.py", line 941, in connect
+    self.sock = self._create_connection(
+  File "/usr/lib/python3.10/socket.py", line 845, in create_connection
+    raise err
+  File "/usr/lib/python3.10/socket.py", line 833, in create_connection
+    sock.connect(sa)
+ConnectionRefusedError: [Errno 111] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/threading.py", line 1016, in _bootstrap_inner
+    self.run()
+  File "/usr/lib/python3.10/threading.py", line 953, in run
+    self._target(*self._args, **self._kwargs)
+  File "/home/r_r/dns_server/./dnsserver", line 106, in _request_measurement
+    res = request.urlopen(req, body_bytes)
+  File "/usr/lib/python3.10/urllib/request.py", line 216, in urlopen
+    return opener.open(url, data, timeout)
+  File "/usr/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/usr/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/usr/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/usr/lib/python3.10/urllib/request.py", line 1377, in http_open
+    return self.do_open(http.client.HTTPConnection, req)
+  File "/usr/lib/python3.10/urllib/request.py", line 1351, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [Errno 111] Connection refused>
