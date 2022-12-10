@@ -57,9 +57,11 @@ def test_stage(idx, results_fd, last_stage: bool = False):
         results_fd.write(f"/{article_path}\t|\t{latency * 1000:.2f}ms\n")
 
     print(f"Stage {idx} took {total_latency:.2f}s")
+    results_fd.write(f"\n\nStage {idx} took {total_latency:.2f}s\n")
     time_to_sleep = 12 - total_latency
     if time_to_sleep >= 0 and not last_stage:
         print(f"Pausing {time_to_sleep:.2f}s before next stage")
+        results_fd.write(f"Pausing {time_to_sleep:.2f}s before next stage\n")
         time.sleep(time_to_sleep)
 
     results_fd.write("\n\n")
