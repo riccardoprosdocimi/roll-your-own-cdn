@@ -23,7 +23,7 @@ done
 
 # DNS server deployment
 echo "Deploying DNS server..."
-echo "Cleaning up any existing directories/files"
+echo "Cleaning up any existing directories/files..."
 ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
 echo "Copying DNS files..."
 scp -i $keyfile -r -q dnsserver GeoLite2-City.mmdb geo.py replicas.py utils.py vendor "$username@$DNS_SERVER:~/$DNS_DIR/" &
