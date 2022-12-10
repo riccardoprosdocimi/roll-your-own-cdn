@@ -1,6 +1,7 @@
 import gzip
 import socket
 import threading
+from urllib.parse import unquote
 
 import psutil
 
@@ -60,3 +61,8 @@ def get_avg_cpu_percent() -> float:
     profiling_thread.join()
 
     return retval[dict_key]
+
+
+def is_url_encoded(path: str) -> bool:
+    unquoted = unquote(path)
+    return path != unquoted

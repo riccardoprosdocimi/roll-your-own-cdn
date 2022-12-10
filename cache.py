@@ -79,7 +79,8 @@ class RepliCache:
         if article[0] == "/":
             article = article[1:]
 
-        article = quote(article)
+        if not utils.is_url_encoded(article):
+            article = quote(article)
 
         if article not in self.articles:
             return False, None
@@ -97,7 +98,12 @@ class RepliCache:
             compressed_article = utils.compress_article(article_raw_bytes)
 
             # Optimistically cache it to disk if we have the space
-            if self.add(article, compressed_article, self.articles[article].views).buffer_offset == NOT_CACHED:
+            if (
+                self.add(
+                    article, compressed_article, self.articles[article].views
+                ).buffer_offset
+                == NOT_CACHED
+            ):
                 self.attempt_evict_and_add(article, compressed_article)
 
             return True, compressed_article

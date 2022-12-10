@@ -40,12 +40,11 @@ class Resolver:
             Resolver.CLIENT_IPS.add(client)  # add it to the known clients
             response = request.reply()
             if client in Resolver.CLIENT_REPLICA_MAP.keys():  # if the client is known
-                replica_ip = Resolver.CLIENT_REPLICA_MAP[client]  # use active measurements
+                replica_ip = Resolver.CLIENT_REPLICA_MAP[client]['replica']  # use active measurements
             else:
                 replica_ip = find_best_replica(client)  # use GeoIP database
-            replica_domain_name = REPLICAS[replica_ip]  # grab the replica's domain name
             response.add_answer(
-                *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))  # build the DNS response to the query
+                *RR.fromZone(f"{CDN_NAME}. {TTL} A {replica_ip}"))  # build the DNS response to the query
             return response
         else:  # raise an error if the name is anything other than cs5700cdn.example.com
             raise DNSError(f"Not authoritative for {request.q.qname}")
