@@ -5,8 +5,10 @@ import threading
 import time
 from dataclasses import dataclass
 from urllib import request
+
 from dnslib.dns import RR
 from dnslib.server import DNSServer, DNSLogger, DNSError
+
 from geo import find_best_replica
 from replicas import REPLICAS
 from utils import get_local_ip
@@ -32,9 +34,8 @@ class Resolver:
                 replica_ip = Resolver.CLIENT_REPLICA_MAP[client]['replica']
             else:
                 replica_ip = find_best_replica(client)
-            replica_domain_name = REPLICAS[replica_ip]
             response.add_answer(
-                *RR.fromZone(f"{replica_domain_name}. {TTL} A {replica_ip}"))
+                *RR.fromZone(f"{CDN_NAME}. {TTL} A {replica_ip}"))
             return response
 
         raise DNSError(f"Not authoritative for {request.q.qname}")
