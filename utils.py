@@ -6,7 +6,7 @@ from urllib.parse import unquote
 import psutil
 
 
-def get_local_ip() -> int:
+def get_local_ip() -> str:
     """
     Gets the localhost IP address.
 
