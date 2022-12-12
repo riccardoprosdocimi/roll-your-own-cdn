@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+DNS_SERVER=proj4-dns.5700.network
+DNS_DIR='dns_server'
+HTTP_REPLICAS=(proj4-repl1.5700.network
+               proj4-repl2.5700.network
+               proj4-repl3.5700.network
+               proj4-repl4.5700.network
+               proj4-repl5.5700.network
+               proj4-repl6.5700.network
+               proj4-repl7.5700.network)
+HTTP_DIR='http_server'
+USERNAME='r_r'
+
+while getopts p:o:n:u:i: flag
+do
+    case "${flag}" in
+        p) port=${OPTARG};;
+        o) origin=${OPTARG};;
+        n) name=${OPTARG};;
+        u) username=${OPTARG};;
+        i) keyfile=${OPTARG};;
+    esac
+done
+
+# shut down and clean up DNS server
+echo "Shutting down the DNS server..."
+ssh -i $keyfile $username@$DNS_SERVER "pkill -u $USERNAME python3; rm -rf ~/$DNS_DIR"
+echo "DNS server has stopped"
+echo "DNS server cleanup complete"
+
+#shut down and clean up HTTP servers
+echo "Shutting down CDN replicas..."
+for replica in "${HTTP_REPLICAS[@]}"
+do
+	echo "Shutting down replica: $username@$replica..."
+	ssh -i $keyfile $username@$replica "pkill -u $USERNAME python3; rm -rf ~/$HTTP_DIR" &
+done
+wait
+echo "Replicas have stopped"
+echo "Replicas cleanup complete"

@@ -1,0 +1,83 @@
+#!/usr/bin/env python3
+
+import subprocess
+import time
+from timeit import default_timer as timer
+from urllib.parse import quote
+from urllib.request import urlopen
+from pathlib import Path
+
+PORT = 25016
+
+REPLICA_IP_TO_LOCATION = {
+    "139.144.30.25": "Atlanta, GA, US",
+    "173.255.210.124": "Fremont, CA, US",
+    "139.144.69.56": "Frankfurt, Germany",
+    "185.3.95.25": "London, UK",
+    "139.162.83.107": "Tokyo, Japan",
+    "192.46.211.228": "Mumbai, India",
+    "170.187.240.5": "Sydney, Australia",
+}
+
+ARTICLES = [
+    "Main Page", "Jeffrey Dahmer", "Rishi Sunak", "-", "Cleopatra",
+    "House of the Dragon", "Christopher Scarver", "Ponniyin Selvan: I",
+    "Black Adam (film)", "Kantara (film)", "YouTube", "Deaths in 2022",
+    "The Northman", "Burkina Faso", "Paul McCartney", "Sri Lanka",
+    "Leonardo da Vinci", "Dulquer Salmaan", "The World's Billionaires",
+    "Martha Stewart", "God of War Ragnarök", "Midsommar", "Celine Dion",
+    "Shakira", "Chris Pine", "List of presidents of the United States"
+]
+
+
+def make_request(replica_ip: str, article: str):
+    article = quote(article.replace(" ", "_"))
+    url = f"http://{replica_ip}:{PORT}/{article}"
+    with urlopen(url) as response:
+        if response.status != 200:
+            print(f"Failed for /{article}: {response.status}")
+
+
+def test_stage(idx, results_fd, last_stage: bool = False):
+    results_fd.write(f"============= Stage {idx} ============= \n\n")
+    replica_ip = subprocess.check_output(
+        "dig @97.107.140.73 -p 25016 cs5700cdn.example.com +short".split(" ")).decode().strip()
+
+    results_fd.write(f"Routing to {replica_ip}, located in {REPLICA_IP_TO_LOCATION[replica_ip]}.\n\n")
+
+    print(f"Running Stage {idx} tests..")
+    total_latency = 0
+    for article_path in ARTICLES:
+        start = timer()
+        make_request(replica_ip, article_path)
+        end = timer()
+
+        latency = end - start
+        total_latency += latency
+        results_fd.write(f"/{article_path}\t|\t{latency * 1000:.2f}ms\n")
+
+    print(f"Stage {idx} took {total_latency:.2f}s")
+    results_fd.write(f"\n\nStage {idx} took {total_latency:.2f}s\n")
+    time_to_sleep = 20 - total_latency
+    if time_to_sleep >= 0 and not last_stage:
+        print(f"Pausing {time_to_sleep:.2f}s before next stage")
+        results_fd.write(f"Pausing {time_to_sleep:.2f}s before next stage\n")
+        time.sleep(time_to_sleep)
+
+    results_fd.write("\n\n")
+
+
+def main():
+    file_path = f"{Path.home()}/results.txt"
+    with open(file_path, "w+") as results_fd:
+        # Stage 1: Before active measurements, just using GeoIP database
+        test_stage(1, results_fd)
+
+        print("\n==========================\n")
+
+        # Stage 2: Hopefully, after we get some active measurements
+        test_stage(2, results_fd, last_stage=True)
+
+
+if __name__ == '__main__':
+    main()
