@@ -21,26 +21,17 @@ do
     esac
 done
 
-# Run each CDN replica
+# run each CDN replica
 echo "Setting up CDN replicas..."
 for replica in "${HTTP_REPLICAS[@]}"
 do
 	echo "Attempting to run replica: $username@$replica..."
-
 	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; nohup ./httpserver -p $port -o $origin &>logs.txt" &
-
-#	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; nohup ./httpserver -p $port -o $origin"
-
 	echo "Replica running at: $username@$replica"
 done
-
 echo "All replicas running!"
 
-# ssh into dns server and run script.
+# run DNS server
 echo "Attempting to run DNS Server..."
-
 ssh -i $keyfile $username@$DNS_SERVER "cd $DNS_DIR; nohup ./dnsserver -p $port -n $name &>logs.txt" &
-
-#ssh -i $keyfile $username@$DNS_SERVER "cd $DNS_DIR; nohup ./dnsserver -p $port -n $name"
-
 echo "DNS server is running!"
