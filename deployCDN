@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+DNS_SERVER=proj4-dns.5700.network
+DNS_DIR='dns_server'
+HTTP_REPLICAS=(proj4-repl1.5700.network
+               proj4-repl2.5700.network
+               proj4-repl3.5700.network
+               proj4-repl4.5700.network
+               proj4-repl5.5700.network
+               proj4-repl6.5700.network
+               proj4-repl7.5700.network)
+HTTP_DIR='http_server'
+
+while getopts p:o:n:u:i: flag
+do
+    case "${flag}" in
+        p) port=${OPTARG};;
+        o) origin=${OPTARG};;
+        n) name=${OPTARG};;
+        u) username=${OPTARG};;
+        i) keyfile=${OPTARG};;
+    esac
+done
+
+# DNS server deployment
+echo "Deploying DNS server..."
+echo "Cleaning up any existing directories/files..."
+ssh -i $keyfile $username@$DNS_SERVER "rm -rf ~/$DNS_DIR; mkdir ~/$DNS_DIR/"
+echo "Copying DNS files..."
+scp -i $keyfile -r -q dnsserver GeoLite2-City.mmdb geo.py replicas.py utils.py vendor "$username@$DNS_SERVER:~/$DNS_DIR/" &
+echo "Successfully deployed DNS Server: $username@$DNS_SERVER"
+
+# CDN replicas deployment
+for replica in "${HTTP_REPLICAS[@]}"
+do
+	echo "Deploying Replica: $username@$replica..."
+	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
+	scp -i $keyfile -r -q httpserver utils.py pageviews.csv cache.py cache "$username@$replica:~/$HTTP_DIR/" &
+#	echo "Building cache on $replica"
+#	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; python3 build_cache.py -o $origin" &
+done
+wait
+echo "All replicas deployed!"
