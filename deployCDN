@@ -35,8 +35,6 @@ do
 	echo "Deploying Replica: $username@$replica..."
 	ssh -i $keyfile $username@$replica "rm -rf ~/$HTTP_DIR; mkdir ~/$HTTP_DIR/"
 	scp -i $keyfile -r -q httpserver utils.py pageviews.csv cache.py cache "$username@$replica:~/$HTTP_DIR/" &
-#	echo "Building cache on $replica"
-#	ssh -i $keyfile $username@$replica "cd $HTTP_DIR; python3 build_cache.py -o $origin" &
 done
 wait
 echo "All replicas deployed!"
