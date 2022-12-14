@@ -35,4 +35,3 @@ echo "All replicas running!"
 echo "Attempting to run DNS Server..."
 ssh -i $keyfile $username@$DNS_SERVER "cd $DNS_DIR; nohup ./dnsserver -p $port -n $name &>logs.txt" &
 echo "DNS server is running!"
-sleep 3m
