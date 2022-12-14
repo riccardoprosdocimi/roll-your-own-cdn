@@ -101,7 +101,7 @@ class RepliCache:
         try:
             return self.get_helper(article)
         except:  # Being super defensive about this
-            return True, self.fetch_from_origin(article)
+            return True, utils.compress_article(self.fetch_from_origin(article))
 
     def get_helper(self, article: str) -> (bool, bytes):
         # Strip away leading slash from URLs
