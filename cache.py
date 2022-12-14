@@ -16,6 +16,14 @@ APPEND = -3
 
 @dataclass(order=True)
 class LookupInfo:
+    """
+    A simple data class that stores the views and buffer offset of
+    an article in the cache. Buffer offset can either be:
+     -2  ==> article not cached
+     -1  ==> article cached on disk
+     >=0 ==> buffer offset within in-memory buffer
+    """
+
     views: int
     buffer_offset: int
 
@@ -28,6 +36,14 @@ class LookupInfo:
 
 
 class RepliCache:
+    """
+    A dynamic caching layer for the CDN. Uses disk as well as memory for caching articles.
+
+    Tracks all the articles that are served via the CDN. If an article is not cached,
+    fetches it from the origin and attempts to cache it. Also tracks the disk and memory
+    usage and conservatively stops at 19MB for both.
+    """
+
     def __init__(self, origin_url: str = DEFAULT_ORIGIN_URL, test_mode: bool = False):
         self.articles = {}
         self.heap = []
@@ -75,6 +91,14 @@ class RepliCache:
         print("Cache built")
 
     def get(self, article: str) -> (bool, bytes):
+        """
+        Attempt to fetch an article from the cache.
+
+        :param article: Request path for the article
+        :return: The boolean in the tuple indicates if the article exists, and
+        if it does, the second argument would be the actual bytes of the article.
+        """
+
         # Strip away leading slash from URLs
         if article[0] == "/":
             article = article[1:]
@@ -120,6 +144,14 @@ class RepliCache:
             return True, self.buffer[lookup_info.buffer_offset]
 
     def add(self, article: str, article_raw_bytes: bytes, views: int) -> LookupInfo:
+        """
+        Attempts to add a new article to the cache.
+
+        :param article: Request path of article to add
+        :param article_raw_bytes: Raw bytes representing the article itself
+        :param views: Number of page views
+        :return:
+        """
         buffer_offset = self.add_to_in_memory_cache(article_raw_bytes)
         if buffer_offset == NOT_CACHED:
             buffer_offset = self.add_to_disk_cache(article, article_raw_bytes)
@@ -134,6 +166,9 @@ class RepliCache:
     def add_to_in_memory_cache(
         self, article_raw_bytes: bytes, buffer_offset: int = APPEND
     ) -> int:
+        """
+        Attempts to add an article to the in-memory cache.
+        """
         if self.fits_in_memory_cache(article_raw_bytes):
             self.memory_used += len(article_raw_bytes)
             if buffer_offset == APPEND:
@@ -164,6 +199,9 @@ class RepliCache:
         return lookup_info.buffer_offset
 
     def add_to_disk_cache(self, article: str, article_raw_bytes: bytes) -> int:
+        """
+        Attempts to add an article to the disk cache.
+        """
         try:
             with open(f"cache/{article}", "wb") as cache_file:
                 cache_file.write(article_raw_bytes)
@@ -233,6 +271,11 @@ class RepliCache:
         lookup_info_to_evict: LookupInfo,
         compressed_article_to_evict: bytes,
     ) -> bool:
+        """
+        Checks if a swap is possible in memory. If yes,
+        performs the same and modifies the appropriate
+        LookupInfo data.
+        """
         swap_possible_in_memory = (
             self.memory_used
             - len(compressed_article_to_evict)
@@ -266,6 +309,11 @@ class RepliCache:
         lookup_info_to_evict: LookupInfo,
         compressed_article_to_evict: bytes,
     ):
+        """
+        Checks if a swap is possible on disk. If yes,
+        performs the same and modifies the appropriate
+        LookupInfo data.
+        """
         swap_possible_on_disk = (
             self.disk_used
             - len(compressed_article_to_promote)
