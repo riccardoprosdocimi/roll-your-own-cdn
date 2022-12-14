@@ -98,7 +98,12 @@ class RepliCache:
         :return: The boolean in the tuple indicates if the article exists, and
         if it does, the second argument would be the actual bytes of the article.
         """
+        try:
+            return self.get_helper(article)
+        except:  # Being super defensive about this
+            return True, self.fetch_from_origin(article)
 
+    def get_helper(self, article: str) -> (bool, bytes):
         # Strip away leading slash from URLs
         if article[0] == "/":
             article = article[1:]
