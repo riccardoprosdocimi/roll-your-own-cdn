@@ -1,0 +1,63 @@
+============= Stage 1 =============
+
+Routing to 139.144.30.25, located in Atlanta, GA, US.
+
+/Main Page      |       41.93ms
+/Jeffrey Dahmer |       30.67ms
+/Rishi Sunak    |       30.54ms
+/-      |       30.57ms
+/Cleopatra      |       31.18ms
+/House of the Dragon    |       30.57ms
+/Christopher Scarver    |       31.24ms
+/Ponniyin Selvan: I     |       30.69ms
+/Black Adam (film)      |       30.78ms
+/Kantara (film) |       31.90ms
+/YouTube        |       30.57ms
+/Deaths in 2022 |       30.97ms
+/The Northman   |       32.11ms
+/Burkina Faso   |       31.06ms
+/Paul McCartney |       30.73ms
+/Sri Lanka      |       30.83ms
+/Leonardo da Vinci      |       30.82ms
+/Dulquer Salmaan        |       32.49ms
+/The World's Billionaires       |       30.50ms
+/Martha Stewart |       30.60ms
+/God of War Ragnarök    |       31.17ms
+/Midsommar      |       30.19ms
+/Celine Dion    |       29.78ms
+/Shakira        |       30.36ms
+/Chris Pine     |       30.63ms
+/List of presidents of the United States        |       31.13ms
+
+
+============= Stage 2 =============
+
+Routing to 139.144.30.25, located in Atlanta, GA, US.
+
+/Main Page      |       31.12ms
+/Jeffrey Dahmer |       32.81ms
+/Rishi Sunak    |       30.67ms
+/-      |       38.04ms
+/Cleopatra      |       30.70ms
+/House of the Dragon    |       31.00ms
+/Christopher Scarver    |       30.73ms
+/Ponniyin Selvan: I     |       35.47ms
+/Black Adam (film)      |       30.85ms
+/Kantara (film) |       30.92ms
+/YouTube        |       31.30ms
+/Deaths in 2022 |       37.35ms
+/The Northman   |       30.48ms
+/Burkina Faso   |       31.08ms
+/Paul McCartney |       31.83ms
+/Sri Lanka      |       31.14ms
+/Leonardo da Vinci      |       30.99ms
+/Dulquer Salmaan        |       31.00ms
+/The World's Billionaires       |       31.40ms
+/Martha Stewart |       31.86ms
+/God of War Ragnarök    |       31.62ms
+/Midsommar      |       31.11ms
+/Celine Dion    |       31.77ms
+/Shakira        |       33.71ms
+/Chris Pine     |       33.17ms
+/List of presidents of the United States        |       31.19ms
+

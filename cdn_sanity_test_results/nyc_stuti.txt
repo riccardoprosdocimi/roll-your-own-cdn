@@ -1,0 +1,64 @@
+============= Stage 1 ============= 
+
+Routing to 139.144.30.25, located in Atlanta, GA, US.
+
+/Main Page	|	1036.59ms
+/Jeffrey Dahmer	|	60.24ms
+/Rishi Sunak	|	58.15ms
+/-	|	57.58ms
+/Cleopatra	|	57.63ms
+/House of the Dragon	|	57.20ms
+/Christopher Scarver	|	72.72ms
+/Ponniyin Selvan: I	|	216.69ms
+/Black Adam (film)	|	57.46ms
+/Kantara (film)	|	64.91ms
+/YouTube	|	69.48ms
+/Deaths in 2022	|	276.13ms
+/The Northman	|	62.84ms
+/Burkina Faso	|	71.46ms
+/Paul McCartney	|	59.04ms
+/Sri Lanka	|	59.94ms
+/Leonardo da Vinci	|	60.07ms
+/Dulquer Salmaan	|	217.22ms
+/The World's Billionaires	|	61.11ms
+/Martha Stewart	|	59.41ms
+/God of War Ragnarök	|	58.14ms
+/Midsommar	|	72.22ms
+/Celine Dion	|	265.13ms
+/Shakira	|	55.97ms
+/Chris Pine	|	73.33ms
+/List of presidents of the United States	|	59.08ms
+
+
+============= Stage 2 ============= 
+
+Routing to 139.144.30.25, located in Atlanta, GA, US.
+
+/Main Page	|	57.39ms
+/Jeffrey Dahmer	|	56.25ms
+/Rishi Sunak	|	58.69ms
+/-	|	80.18ms
+/Cleopatra	|	162.11ms
+/House of the Dragon	|	159.70ms
+/Christopher Scarver	|	78.95ms
+/Ponniyin Selvan: I	|	73.16ms
+/Black Adam (film)	|	59.73ms
+/Kantara (film)	|	58.10ms
+/YouTube	|	195.42ms
+/Deaths in 2022	|	63.71ms
+/The Northman	|	121.16ms
+/Burkina Faso	|	58.68ms
+/Paul McCartney	|	148.14ms
+/Sri Lanka	|	132.82ms
+/Leonardo da Vinci	|	68.99ms
+/Dulquer Salmaan	|	58.22ms
+/The World's Billionaires	|	61.31ms
+/Martha Stewart	|	57.47ms
+/God of War Ragnarök	|	78.18ms
+/Midsommar	|	200.09ms
+/Celine Dion	|	57.01ms
+/Shakira	|	58.56ms
+/Chris Pine	|	78.70ms
+/List of presidents of the United States	|	66.90ms
+
+

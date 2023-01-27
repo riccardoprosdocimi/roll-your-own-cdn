@@ -1,0 +1,71 @@
+============= Stage 1 ============= 
+
+Routing to 173.255.210.124, located in Fremont, CA, US.
+
+/Main Page	|	181.58ms
+/Jeffrey Dahmer	|	213.96ms
+/Rishi Sunak	|	107.68ms
+/-	|	117.98ms
+/Cleopatra	|	112.78ms
+/House of the Dragon	|	170.90ms
+/Christopher Scarver	|	228.28ms
+/Ponniyin Selvan: I	|	311.35ms
+/Black Adam (film)	|	162.50ms
+/Kantara (film)	|	131.93ms
+/YouTube	|	82.95ms
+/Deaths in 2022	|	174.14ms
+/The Northman	|	955.11ms
+/Burkina Faso	|	893.37ms
+/Paul McCartney	|	979.26ms
+/Sri Lanka	|	853.23ms
+/Leonardo da Vinci	|	726.35ms
+/Dulquer Salmaan	|	627.43ms
+/The World's Billionaires	|	786.35ms
+/Martha Stewart	|	616.37ms
+/God of War Ragnarök	|	598.45ms
+/Midsommar	|	558.72ms
+/Celine Dion	|	991.23ms
+/Shakira	|	707.68ms
+/Chris Pine	|	533.96ms
+/List of presidents of the United States	|	676.30ms
+
+
+Stage 1 took 12.50s
+Pausing 7.50s before next stage
+
+
+============= Stage 2 ============= 
+
+Routing to 173.255.210.124, located in Fremont, CA, US.
+
+/Main Page	|	348.56ms
+/Jeffrey Dahmer	|	127.74ms
+/Rishi Sunak	|	129.13ms
+/-	|	155.52ms
+/Cleopatra	|	413.27ms
+/House of the Dragon	|	392.46ms
+/Christopher Scarver	|	165.06ms
+/Ponniyin Selvan: I	|	304.80ms
+/Black Adam (film)	|	88.17ms
+/Kantara (film)	|	151.06ms
+/YouTube	|	80.42ms
+/Deaths in 2022	|	163.28ms
+/The Northman	|	118.09ms
+/Burkina Faso	|	78.05ms
+/Paul McCartney	|	66.43ms
+/Sri Lanka	|	93.08ms
+/Leonardo da Vinci	|	104.44ms
+/Dulquer Salmaan	|	115.94ms
+/The World's Billionaires	|	75.38ms
+/Martha Stewart	|	88.18ms
+/God of War Ragnarök	|	95.52ms
+/Midsommar	|	131.04ms
+/Celine Dion	|	103.26ms
+/Shakira	|	121.89ms
+/Chris Pine	|	131.40ms
+/List of presidents of the United States	|	124.64ms
+
+
+Stage 2 took 3.97s
+
+
